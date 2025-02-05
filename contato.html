@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Loja de Massas</title>
+  <link rel="stylesheet" href="/style.css">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Playwrite+IN:wght@100..400&display=swap');
+  </style>
+  <style>
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    padding: 20px;
+}
+
+.container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* Dois cards por linha */
+    gap: 20px; /* Espaçamento entre os cards */
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.card {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    aspect-ratio: 1 / 1; /* Mantém o card quadrado */
+}
+
+.product-image {
+    width: 250px;
+    height: 250px; /* A imagem ocupa 70% do card */
+    object-fit: cover; /* Garante que a imagem cubra o espaço sem distorcer */
+    width: 100%;
+}
+
+.product-info {
+    padding: 15px;
+    text-align: center;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.product-name {
+    font-size: 1.2em;
+    margin-bottom: 10px;
+}
+
+.whatsapp-button {
+    display: inline-block;
+    background-color: #25D366;
+    color: #fff;
+    text-decoration: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    font-size: 0.9em;
+    text-align: center;
+}
+
+.whatsapp-button:hover {
+    background-color: #128C7E;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .container {
+        grid-template-columns: 1fr; /* Um card por linha em telas menores */
+    }
+}
+  </style>
+</head>
+
+<body>
+  <main>
+    <nav class="navbar">
+      <img src="/imgs/logo.png" alt="Logo da Loja" height="50px">
+      <div class="menu-toggle" id="menu-toggle">
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+      </div>
+      <ul class="menu" id="menu">
+        <li><a href="/index.html">Início</a></li>
+        <li><a href="/historia.html">História</a></li>
+        <li><a href="/produtos.html">Produtos</a></li>
+        <li><a href="/contato.html">Contato</a></li>
+      </ul>
+    </nav>
+
+    <div class="nome">
+      <h1>Andreani</h1>
+    </div>
+
+
+    <footer>
+      <div class="footer-container">
+        <div class="social-media">
+          <h2>Siga-nos</h2>
+          <div class="social-icons">
+            <a href="" class="icon"><img src="/imgs/wzpp.png" alt="WhatsApp"></a>
+            <a href="" class="icon">
+              <p>WhatsApp</p>
+            </a>
+            <a href="https://www.instagram.com/massasandreani/" class="icon"><img src="/imgs/insta.png"
+                alt="Instagram"></a>
+            <a href="https://www.instagram.com/massasandreani/" class="icon">
+              <p>Instagram</p>
+            </a>
+
+          </div>
+          <br>
+          <p>Rua Professor Raimundo Nonato, 63</p>
+          <p>Santa Tereza, Belo Horizonte</p>
+        </div>
+
+        <div class="logo">
+          <img src="/imgs/logo.png" alt="Andreani Massas">
+        </div>
+      </div>
+    </footer>
+  </main>
+  <script src="script.js"></script>
+</body>
+
+</html>

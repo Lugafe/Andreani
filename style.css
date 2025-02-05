@@ -1,0 +1,506 @@
+/* Reset geral */
+body,
+html {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+  box-sizing: border-box;
+  background-color: #F2F2F2;
+  overflow-x: hidden;
+}
+
+body a {
+  text-decoration: none;
+  color: #000;
+}
+
+/* navbar */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  background-color: #fff;
+}
+
+.menu {
+  display: none;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.menu.active {
+  display: block;
+  position: absolute;
+  top: 60px;
+  left: 0;
+  right: 0;
+  background-color: #fff;
+  z-index: 10;
+  text-align: center;
+}
+
+.menu li {
+  margin: 10px 0;
+}
+
+.menu-toggle {
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 30px;
+  height: 25px;
+}
+
+.menu-toggle span {
+  display: block;
+  height: 4px;
+  background-color: #000;
+  transition: all 0.3s;
+}
+
+.menu-toggle.open .bar:nth-child(1) {
+  transform: rotate(45deg) translate(5px, 5px);
+}
+
+.menu-toggle.open .bar:nth-child(2) {
+  opacity: 0;
+}
+
+.menu-toggle.open .bar:nth-child(3) {
+  transform: rotate(-45deg) translate(5px, -5px);
+}
+
+/* Estilo para telas maiores (desktop) */
+@media (min-width: 768px) {
+  .menu {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .menu li {
+    margin: 0 15px;
+  }
+
+  .menu-toggle {
+    display: none;
+  }
+}
+
+/* end navbar */
+/* Nome */
+.nome {
+  font-family: "Playwrite IN", serif;
+  font-optical-sizing: auto;
+  font-weight: 300;
+  font-style: normal;
+  color: rgba(64, 13, 13, 0.9);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* end Nome */
+/* Principal */
+.principal {
+  position: relative;
+  /* min-height: 50vh; */
+  text-align: center;
+  background-color: #F2F2F2;
+  padding: 30px 0;
+}
+
+.imagem-principal {
+  position: absolute;
+  /* Pode ser fixed se quiser ocupar a tela toda */
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  /* Garante que a imagem cubra toda a área */
+  z-index: -1;
+  /* Joga a imagem para trás */
+}
+
+.whatsapp-box {
+  position: relative;
+  /* Mantém a caixa acima da imagem */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(64, 13, 13, 0.9);
+  width: 100%;
+  margin: 0 auto;
+  padding: 20px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  animation: fadeIn 1s ease-in-out;
+  opacity: 0.9;
+  z-index: 10;
+  /* Mantém acima da imagem */
+}
+
+.imagem-principal img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+
+.whatsapp-box .content {
+  max-width: 500px;
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  text-align: center;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.whatsapp-box .icon img {
+  width: 50px;
+  margin-bottom: 15px;
+}
+
+.whatsapp-box h2 {
+  font-size: 24px;
+  color: #008000;
+  margin-bottom: 10px;
+}
+
+.whatsapp-box p {
+  font-size: 16px;
+  color: #666;
+  margin-bottom: 20px;
+}
+
+.btn-whatsapp {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #25d366;
+  color: white;
+  font-size: 16px;
+  font-weight: bold;
+  text-decoration: none;
+  border-radius: 5px;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.btn-whatsapp:hover {
+  background-color: #1ebe57;
+  transform: scale(1.05);
+}
+
+/* end Principal */
+
+.horario-funcionamento {
+  max-width: 800px;
+  margin: 50px auto;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.horario-funcionamento h2 {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 20px;
+  text-align: left;
+}
+
+.horario {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.dia {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.titulo {
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.linha {
+  width: 100%;
+  height: 1px;
+  background-color: #ccc;
+  margin: 5px 0;
+}
+
+.horas {
+  font-size: 14px;
+  color: #555;
+}
+
+.endereco {
+  display: flex;
+  flex-wrap: wrap;
+  max-width: 2000px;
+  margin: 0 auto;
+  background: linear-gradient(to right, #008000 15%, #ffffff 15% 85%, #ff0000 85%);
+}
+
+.mapa {
+  padding: 5% 0 5% 12%;
+  min-width: 300px;
+  height: 350px;
+  width: 550px;
+}
+
+.informacoes {
+  min-width: 300px;
+  margin-top: 5%;
+  padding-left: 2%;
+  min-height: 300px;
+}
+
+footer {
+  background: #f5f5f5;
+  padding: 40px 20px;
+  display: flex;
+  justify-content: center;
+}
+
+.footer-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1100px;
+  width: 100%;
+  flex-wrap: wrap;
+}
+
+.social-media {
+  text-align: left;
+  padding-left: 15rem;
+}
+
+.social-media h3 {
+  font-size: 1.2rem;
+  margin-bottom: 10px;
+}
+
+.social-icons {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.icon img {
+  width: 30px;
+  height: 30px;
+}
+
+.address {
+  text-align: center;
+  font-size: 1rem;
+}
+
+.logo img {
+  width: 150px;
+  height: auto;
+  border-radius: 50%;
+  padding-right: 15rem;
+}
+
+@media (max-width: 1024px) {
+  .whatsapp-box .content {
+    width: 90%;
+  }
+
+  .horario-funcionamento {
+    padding: 15px;
+    margin: 30px auto;
+  }
+
+  .horario-funcionamento h2 {
+    font-size: 20px;
+    text-align: center;
+  }
+
+  .horario {
+    gap: 15px;
+  }
+
+  .informacoes {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-left: 36%;
+  }
+  .endereco{
+    padding: 0;
+  }
+  .mapa {
+    width: 90%;
+    padding-left: 50px;
+  }
+  .logo img{
+    display: none;
+  }
+}
+
+@media (max-width: 768px) {
+  .menu {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: -300px;
+    left: 0;
+    right: 0;
+    background-color: #fff;
+    text-align: center;
+    padding: 20px 0;
+    z-index: 10;
+    transition: top 0.7s;
+  }
+
+  .menu.active {
+    top: 60px;
+  }
+
+  .menu li {
+    margin: 10px 0;
+  }
+
+  .menu-toggle {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 30px;
+    height: 25px;
+    cursor: pointer;
+  }
+
+  .menu-toggle span {
+    display: block;
+    height: 4px;
+    background-color: #000;
+    border-radius: 2px;
+    transition: all 0.3s;
+  }
+
+  .menu-toggle.open .bar:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 5px);
+  }
+
+  .menu-toggle.open .bar:nth-child(2) {
+    opacity: 0;
+  }
+
+  .menu-toggle.open .bar:nth-child(3) {
+    transform: rotate(-45deg) translate(5px, -5px);
+  }
+
+  .navbar .menu {
+    gap: 10px;
+  }
+
+  .principal {
+    background-size: 70%;
+    padding: 20px 0;
+  }
+
+  .whatsapp-box .content {
+    width: 100%;
+    padding: 15px;
+  }
+
+  .btn-whatsapp {
+    font-size: 14px;
+    padding: 8px 15px;
+  }
+
+  .horario-funcionamento {
+    margin: 20px 10px;
+  }
+
+  .endereco {
+    flex-direction: column;
+    align-items: center;
+    min-height: 500px;
+  }
+
+  .mapa,
+  .informacoes {
+    width: 90%;
+    padding-left: 0;
+  }
+
+  .mapa {
+    height: 250px;
+  }
+
+  .informacoes {
+    text-align: center;
+  }
+}
+
+@media (max-width: 500px) {
+  .navbar .menu {
+    font-size: 14px;
+  }
+
+  .principal {
+    height: 200px;
+  }
+
+  .whatsapp-box {
+    flex-direction: column;
+    align-items: center;
+    width: 90%; /* Reduz um pouco a largura para evitar cortes */
+    max-width: 400px; /* Define um tamanho máximo adequado */
+    margin: 0 auto 20px; /* Garante um espaçamento inferior */
+  }
+
+  .whatsapp-box .content {
+    width: 100%;
+    padding: 10px;
+  }
+
+  .whatsapp-box h2 {
+    font-size: 18px;
+  }
+
+  .btn-whatsapp {
+    font-size: 14px;
+    padding: 8px 12px;
+  }
+
+  .mapa {
+    height: 200px;
+  }
+
+  .endereco p{
+    font-size: 15px;
+  }
+
+  .social-media {
+    padding-left: 35px;
+    text-align: center;
+  }
+
+  .logo img {
+    display: none;
+  }
+}
