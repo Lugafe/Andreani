@@ -4,116 +4,406 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Loja de Massas</title>
+  <meta name="description" content="Massas artesanais Andreani - Tradição italiana em Belo Horizonte">
+  <meta name="keywords" content="massas, lasanha, comida italiana, belo horizonte">
+  <title>Andreani Massas Artesanais | Tradição Italiana em BH</title>
   <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playwrite+IN:wght@100..400&family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Playwrite+IN:wght@100..400&display=swap');
+    /* Estilos para o carrossel */
+    /* Estilos para o carrossel */
+.hero-carousel {
+  position: relative;
+  flex: 1;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  height: 500px; /* Ajuste este valor conforme necessário para o seu design */
+}
+    
+    .carousel-inner {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+    }
+    
+    .carousel-item {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      opacity: 0;
+      transition: opacity 1s ease-in-out;
+    }
+    
+    .carousel-item.active {
+      opacity: 1;
+      z-index: 1;
+    }
+    
+    .carousel-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    
+    .carousel-indicators {
+      position: absolute;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      gap: 10px;
+      z-index: 2;
+    }
+    
+    .indicator {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      border: none;
+      background-color: rgba(255, 255, 255, 0.5);
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    
+    .indicator.active {
+      background-color: white;
+      transform: scale(1.2);
+    }
+    
+    @media (max-width: 768px) {
+      .hero-carousel {
+        height: 300px;
+        margin-top: 30px;
+      }
+      
+      .carousel-indicators {
+        bottom: 10px;
+      }
+    }
   </style>
 </head>
 
 <body>
-  <main>
+  <!-- Barra de navegação -->
+  <header class="header">
     <nav class="navbar">
-      <img src="imgs/logo.png" alt="Logo da Loja" height="50px">
-      <div class="menu-toggle" id="menu-toggle">
-        <span class="bar"></span>
-        <span class="bar"></span>
-        <span class="bar"></span>
+      <div class="navbar-container">
+        <a href="index.html" class="logo-link">
+          <img src="imgs/logo.png" alt="Andreani Massas Artesanais" class="logo" width="70">
+        </a>
+        
+        <div class="menu-toggle" id="menu-toggle" aria-label="Menu mobile">
+          <span class="bar"></span>
+          <span class="bar"></span>
+          <span class="bar"></span>
+        </div>
+        
+        <ul class="nav-menu" id="nav-menu">
+          <li class="nav-item"><a href="index.html" class="nav-link active">Início</a></li>
+          <li class="nav-item"><a href="produtos.html" class="nav-link">Nossas Massas</a></li>
+          <li class="nav-item"><a href="contato.html" class="nav-link">Contato</a></li>
+          <li class="nav-item highlight"><a href="https://wa.me/+5531984711401" class="nav-link whatsapp-link" target="_blank">
+            <i class="fab fa-whatsapp"></i> Pedir agora
+          </a></li>
+        </ul>
       </div>
-      <ul class="menu" id="menu">
-        <li><a href="index.html">Início</a></li>
-        <li><a href="historia.html">História</a></li>
-        <li><a href="produtos.html">Produtos</a></li>
-        <li><a href="contato.html">Contato</a></li>
-      </ul>
     </nav>
+  </header>
 
-    <div class="nome">
-      <h1>Andreani</h1>
-    </div>
-
-    <div class="botao">
-      <a href="produtos.html" class="botao-produtos">Ver Produtos</a>
-    </div>
-
-    <div class="principal">
-      <div class="imagem-principal">
-        <img src="imgs/Ls.jpeg" alt="Imagem Principal">
+  <main>
+    <!-- Hero Section com Carrossel -->
+    <section class="hero">
+      <div class="hero-content">
+        <h1 class="hero-title">Massas Artesanais com Tradição Italiana</h1>
+        <p class="hero-subtitle">Feitas com ingredientes selecionados e receitas familiares</p>
+        <div class="hero-buttons">
+          <a href="produtos.html" class="btn btn-primary">Conheça nossos produtos</a>
+          <a href="https://wa.me/+5531984711401" class="btn btn-whatsapp" target="_blank">
+            <i class="fab fa-whatsapp"></i> Faça seu pedido
+          </a>
+        </div>
       </div>
-      <div class="whatsapp-box">
-        <div class="content">
-          <div class="">
-            <div class="icon">
-              <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp Logo">
+      
+      <div class="hero-carousel">
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <img src="imgs/LasagnaClassica.jpg" alt="Variedade de massas artesanais" loading="lazy">
+          </div>
+          <div class="carousel-item">
+            <img src="imgs/Canelloni Verde - Andreani.jpeg" alt="Lasanha artesanal" loading="lazy">
+          </div>
+          <div class="carousel-item">
+            <img src="imgs/Mini Pizza - Andreani.jpeg" alt="Nhoque caseiro" loading="lazy">
+          </div>
+          <div class="carousel-item">
+            <img src="imgs/Rondelli - Andreani.jpeg" alt="Ravioli especial" loading="lazy">
+          </div>
+        </div>
+        
+        <!-- Indicadores do carrossel -->
+        <div class="carousel-indicators">
+          <button class="indicator active" aria-label="Slide 1"></button>
+          <button class="indicator" aria-label="Slide 2"></button>
+          <button class="indicator" aria-label="Slide 3"></button>
+          <button class="indicator" aria-label="Slide 4"></button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Destaque da Lasanha -->
+    <section class="featured-product">
+      <div class="container">
+        <div class="product-image">
+          <img src="imgs/Ls.jpeg" alt="Lasanha artesanal Andreani" loading="lazy">
+        </div>
+        <div class="product-info">
+          <h2 class="section-title">Nossa Lasanha Especial</h2>
+          <div class="divider"></div>
+          <p class="product-description">
+            Preparada com camadas generosas de massa artesanal, molho de tomate caseiro, carne selecionada e um
+            irresistível toque de queijo derretido, nossa lasanha é o prato perfeito para quem busca sabor e tradição em
+            cada garfada. Feita com carinho e ingredientes frescos, ela é a estrela da casa e conquista todos os paladares.
+          </p>
+          <div class="product-highlights">
+            <div class="highlight-item">
+              <i class="fas fa-check-circle"></i>
+              <span>Feita artesanalmente</span>
             </div>
-            <h2>FAÇA SEU PEDIDO PELO WHATSAPP</h2>
-            <p>Confira nossas delícias!</p>
-            <a href="https://wa.me/+5531984711401" target="_blank" class="btn-whatsapp">FAZER PEDIDO</a>
+            <div class="highlight-item">
+              <i class="fas fa-check-circle"></i>
+              <span>Ingredientes selecionados</span>
+            </div>
+            <div class="highlight-item">
+              <i class="fas fa-check-circle"></i>
+              <span>Pronta para aquecer e servir</span>
+            </div>
+          </div>
+          <a href="produtos.html#lasanha" class="btn btn-outline">Saiba mais</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Chamada para ação -->
+    <section class="cta-section">
+      <div class="container">
+        <h2>Pronto para experimentar nossas massas?</h2>
+        <p>Faça seu pedido agora mesmo pelo WhatsApp</p>
+        <a href="https://wa.me/+5531984711401" class="btn btn-whatsapp-lg" target="_blank">
+          <i class="fab fa-whatsapp"></i> Pedir pelo WhatsApp
+        </a>
+      </div>
+    </section>
+
+    <!-- Horário de funcionamento -->
+    <section class="opening-hours">
+      <div class="container">
+        <h2 class="section-title">Horário de Funcionamento</h2>
+        <div class="divider"></div>
+        
+        <div class="hours-grid">
+          <div class="day-card">
+            <h3>Segunda a Sexta</h3>
+            <p>09:00 - 18:00</p>
+          </div>
+          <div class="day-card">
+            <h3>Sábado</h3>
+            <p>09:00 - 13:00</p>
+          </div>
+          <div class="day-card highlight">
+            <h3>Domingo</h3>
+            <p>Fechado</p>
           </div>
         </div>
+        
+        <p class="notice">Pedidos com antecedência podem ser combinados fora do horário comercial.</p>
       </div>
-    </div>
-    <div class="horario-funcionamento">
-      <h2>Horário de funcionamento</h2>
-      <div class="horario">
-        <div class="dia">
-          <span class="titulo">Segunda-feira - Sexta-feira</span>
-          <span class="linha"></span>
-          <span class="horas">08:00am – 06:00pm</span>
-        </div>
-        <div class="dia">
-          <span class="titulo">Sábado</span>
-          <span class="linha"></span>
-          <span class="horas">08:00am – 03:00pm</span>
-        </div>
-      </div>
-    </div>
+    </section>
 
-    <div class="endereco">
-      <div class="mapa">
-        <iframe
-          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3762.6491522054455!2d-43.9286318855513!3d-19.92105548660186!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xa699f1e8f0a285%3A0x5b7d8129ea79ef32!2sRua%20Professor%20Raimundo%20Nonato%2C%2063%20-%20Santa%20Tereza%2C%20Belo%20Horizonte%20-%20MG%2C%2031010-520!5e0!3m2!1spt-BR!2sbr!4v1694728716018!5m2!1spt-BR!2sbr"
-          width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"
-          referrerpolicy="no-referrer-when-downgrade">
-        </iframe>
-      </div>
-      <div class="informacoes">
-        <h2>Endereço</h2>
-        <p>Rua Professor Raimundo Nonato, 63 <br> Santa Tereza, Belo Horizonte, Brasil</p>
-        <h2>Telefone</h2>
-        <p>(31) 3461-3969</p>
-        <h2>E-mail</h2>
-        <p><a href="massasandreani@yahoo.com.br">massasandreani@yahoo.com.br</a></p>
-      </div>
-    </div>
-    <footer>
-      <div class="footer-container">
-        <div class="social-media">
-          <h2>Siga-nos</h2>
-          <div class="social-icons">
-            <a href="https://wa.me/+5531984711401" class="icon"><img src="/imgs/wzpp.png" alt="WhatsApp"></a>
-            <a href="https://wa.me/+5531984711401" class="icon">
-              <p>WhatsApp</p>
-            </a>
-            <a href="https://www.instagram.com/massasandreani/" class="icon"><img src="/imgs/insta.png"
-                alt="Instagram"></a>
-            <a href="https://www.instagram.com/massasandreani/" class="icon">
-              <p>Instagram</p>
-            </a>
-
+    <!-- Localização -->
+    <section class="location">
+      <div class="container">
+        <div class="location-info">
+          <h2 class="section-title">Nosso Endereço</h2>
+          <div class="divider"></div>
+          
+          <div class="info-item">
+            <i class="fas fa-map-marker-alt"></i>
+            <p>Rua Professor Raimundo Nonato, 63<br>Santa Tereza, Belo Horizonte - MG</p>
           </div>
-          <br>
-          <p>Rua Professor Raimundo Nonato, 63</p>
-          <p>Santa Tereza, Belo Horizonte</p>
+          
+          <div class="info-item">
+            <i class="fas fa-phone-alt"></i>
+            <p>(31) 3461-3969</p>
+          </div>
+          
+          <div class="info-item">
+            <i class="fas fa-envelope"></i>
+            <p><a href="mailto:massasandreani@yahoo.com.br">massasandreani@yahoo.com.br</a></p>
+          </div>
+          
+          <div class="social-links">
+            <a href="https://wa.me/+5531984711401" class="social-icon" target="_blank" aria-label="WhatsApp">
+              <i class="fab fa-whatsapp"></i>
+            </a>
+            <a href="https://www.instagram.com/massasandreani/" class="social-icon" target="_blank" aria-label="Instagram">
+              <i class="fab fa-instagram"></i>
+            </a>
+            <a href="https://www.facebook.com/massasandreani" class="social-icon" target="_blank" aria-label="Facebook">
+              <i class="fab fa-facebook-f"></i>
+            </a>
+          </div>
         </div>
-
-        <div class="logo">
-          <img src="imgs/logo.png" alt="Andreani Massas">
+        
+        <div class="location-map">
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3762.6491522054455!2d-43.9286318855513!3d-19.92105548660186!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xa699f1e8f0a285%3A0x5b7d8129ea79ef32!2sRua%20Professor%20Raimundo%20Nonato%2C%2063%20-%20Santa%20Tereza%2C%20Belo%20Horizonte%20-%20MG%2C%2031010-520!5e0!3m2!1spt-BR!2sbr!4v1694728716018!5m2!1spt-BR!2sbr"
+            width="100%" height="400" style="border:0;" allowfullscreen="" loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade" title="Localização da Massas Andreani">
+          </iframe>
         </div>
       </div>
-    </footer>
+    </section>
   </main>
-  <script src="script.js"></script>
-</body>
 
+  <!-- Rodapé -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-logo">
+          <img src="imgs/logo.png" alt="Andreani Massas" width="150">
+          <p>Tradição italiana em massas artesanais</p>
+        </div>
+        
+        <div class="footer-links">
+          <h3>Links Rápidos</h3>
+          <ul>
+            <li><a href="index.html">Início</a></li>
+            
+            <li><a href="produtos.html">Nossas Massas</a></li>
+            <li><a href="contato.html">Contato</a></li>
+          </ul>
+        </div>
+        
+        <div class="footer-contact">
+          <h3>Contato</h3>
+          <p><i class="fas fa-map-marker-alt"></i> Rua Prof. Raimundo Nonato, 63</p>
+          <p><i class="fas fa-phone-alt"></i>  (31) 3274-5019</p>
+          <p><i class="fas fa-envelope"></i> massasandreani@yahoo.com.br</p>
+        </div>
+      </div>
+      
+      <div class="footer-bottom">
+        <div class="copyright">
+          &copy; <span id="year"></span> Massas Andreani. Todos os direitos reservados.
+        </div>
+        <div class="social-links">
+          <a href="https://wa.me/+5531984711401" class="social-icon" target="_blank" aria-label="WhatsApp">
+            <i class="fab fa-whatsapp"></i>
+          </a>
+          <a href="https://www.instagram.com/massasandreani/" class="social-icon" target="_blank" aria-label="Instagram">
+            <i class="fab fa-instagram"></i>
+          </a>
+          <a href="https://www.facebook.com/massasandreani" class="social-icon" target="_blank" aria-label="Facebook">
+            <i class="fab fa-facebook-f"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Botão flutuante do WhatsApp -->
+  <a href="https://wa.me/+5531984711401" class="float-whatsapp" target="_blank" aria-label="Fale conosco no WhatsApp">
+    <i class="fab fa-whatsapp"></i>
+  </a>
+
+  <script>
+    // Atualiza o ano no copyright
+    document.getElementById('year').textContent = new Date().getFullYear();
+    
+    // Menu mobile
+    const menuToggle = document.getElementById('menu-toggle');
+    const navMenu = document.getElementById('nav-menu');
+    
+    menuToggle.addEventListener('click', () => {
+      navMenu.classList.toggle('active');
+      menuToggle.classList.toggle('active');
+    });
+    
+    // Fecha o menu ao clicar em um link
+    document.querySelectorAll('.nav-link').forEach(link => {
+      link.addEventListener('click', () => {
+        navMenu.classList.remove('active');
+        menuToggle.classList.remove('active');
+      });
+    });
+    
+    // Animação ao rolar a página
+    window.addEventListener('scroll', () => {
+      const header = document.querySelector('.header');
+      header.classList.toggle('sticky', window.scrollY > 0);
+    });
+    
+    // Configuração do carrossel automático
+    document.addEventListener('DOMContentLoaded', function() {
+      const carouselItems = document.querySelectorAll('.carousel-item');
+      const indicators = document.querySelectorAll('.indicator');
+      let currentIndex = 0;
+      const intervalTime = 5000; // 5 segundos
+      
+      // Função para mudar o slide
+      function changeSlide() {
+        // Remove a classe active do slide atual
+        carouselItems[currentIndex].classList.remove('active');
+        indicators[currentIndex].classList.remove('active');
+        
+        // Avança para o próximo slide
+        currentIndex = (currentIndex + 1) % carouselItems.length;
+        
+        // Adiciona a classe active ao novo slide
+        carouselItems[currentIndex].classList.add('active');
+        indicators[currentIndex].classList.add('active');
+      }
+      
+      // Inicia o carrossel automático
+      let carouselInterval = setInterval(changeSlide, intervalTime);
+      
+      // Pausa o carrossel quando o mouse está sobre ele
+      const carousel = document.querySelector('.hero-carousel');
+      carousel.addEventListener('mouseenter', () => {
+        clearInterval(carouselInterval);
+      });
+      
+      // Retoma o carrossel quando o mouse sai
+      carousel.addEventListener('mouseleave', () => {
+        carouselInterval = setInterval(changeSlide, intervalTime);
+      });
+      
+      // Controle pelos indicadores
+      indicators.forEach((indicator, index) => {
+        indicator.addEventListener('click', () => {
+          clearInterval(carouselInterval);
+          
+          // Remove a classe active de todos
+          carouselItems.forEach(item => item.classList.remove('active'));
+          indicators.forEach(ind => ind.classList.remove('active'));
+          
+          // Adiciona ao selecionado
+          carouselItems[index].classList.add('active');
+          indicators[index].classList.add('active');
+          currentIndex = index;
+          
+          // Reinicia o intervalo
+          carouselInterval = setInterval(changeSlide, intervalTime);
+        });
+      });
+    });
+  </script>
+</body>
 </html>

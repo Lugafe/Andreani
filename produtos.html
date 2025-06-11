@@ -4,170 +4,397 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Loja de Massas</title>
+  <meta name="description" content="Nossas deliciosas massas artesanais - Tradição italiana em Belo Horizonte">
+  <title>Nossos Produtos | Massas Andreani</title>
   <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playwrite+IN:wght@100..400&family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Playwrite+IN:wght@100..400&display=swap');
-  </style>
-  <style>
-body {
-    font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
-    padding: 20px;
-}
-
-.container {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr); /* Dois cards por linha */
-    gap: 20px; /* Espaçamento entre os cards */
-    max-width: 800px;
-    margin: 0 auto;
-}
-
-.card {
-    background-color: #fff;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    overflow: hidden;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    aspect-ratio: 1 / 1; /* Mantém o card quadrado */
-}
-
-.product-image {
-    width: 250px;
-    height: 250px; /* A imagem ocupa 70% do card */
-    object-fit: cover; /* Garante que a imagem cubra o espaço sem distorcer */
-    width: 100%;
-}
-
-.product-info {
-    padding: 15px;
-    text-align: center;
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-}
-
-.product-name {
-    font-size: 1.2em;
-    margin-bottom: 10px;
-}
-
-.whatsapp-button {
-    display: inline-block;
-    background-color: #25D366;
-    color: #fff;
-    text-decoration: none;
-    padding: 10px 15px;
-    border-radius: 5px;
-    font-size: 0.9em;
-    text-align: center;
-}
-
-.whatsapp-button:hover {
-    background-color: #128C7E;
-}
-
-/* Responsividade */
-@media (max-width: 768px) {
-    .container {
-        grid-template-columns: 1fr; /* Um card por linha em telas menores */
+    /* Estilos específicos para a página de produtos */
+    .products-hero {
+      background: linear-gradient(rgba(0, 0, 0, 0.6)), url('imgs/hero-produtos.jpg') center/cover no-repeat;
+      color: white;
+      text-align: center;
+      padding: 120px 20px 80px;
+      margin-bottom: 60px;
     }
-}
+    
+    .products-hero h1 {
+      font-size: 3rem;
+      margin-bottom: 20px;
+    }
+    
+    .products-hero p {
+      font-size: 1.2rem;
+      max-width: 700px;
+      margin: 0 auto 30px;
+    }
+    
+    .products-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px 60px;
+    }
+    
+    .products-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 30px;
+      margin-top: 40px;
+    }
+    
+    .product-card {
+      background: white;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+      transition: all 0.3s ease;
+      display: flex;
+      flex-direction: column;
+    }
+    
+    .product-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+    }
+    
+    .product-image {
+      width: 100%;
+      height: 250px;
+      object-fit: cover;
+    }
+    
+    .product-info {
+      padding: 20px;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+    
+    .product-name {
+      font-family: 'Playwrite IN', serif;
+      font-size: 1.5rem;
+      color: #402020;
+      margin-bottom: 10px;
+    }
+    
+    .product-description {
+      color: #666;
+      margin-bottom: 20px;
+      flex: 1;
+    }
+    
+ 
+    
+    .product-cta {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 10px;
+    }
+    
+    .whatsapp-btn {
+      background: #25D366;
+      color: white;
+      padding: 12px 20px;
+      border-radius: 50px;
+      font-weight: 600;
+      flex: 1;
+      text-align: center;
+      transition: all 0.3s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+    }
+    
+    .whatsapp-btn:hover {
+      background: #128C7E;
+      transform: translateY(-2px);
+    }
+    
+
+    
+    .product-categories {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      margin-bottom: 40px;
+      flex-wrap: wrap;
+    }
+    
+    .category-btn {
+      padding: 10px 20px;
+      background: #f8f8f8;
+      border-radius: 50px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    
+    .category-btn.active, .category-btn:hover {
+      background: #8B0000;
+      color: white;
+    }
+    
+    @media (max-width: 768px) {
+      .products-hero {
+        padding: 100px 20px 60px;
+      }
+      
+      .products-hero h1 {
+        font-size: 2.2rem;
+      }
+      
+      .product-image {
+        height: 200px;
+      }
+    }
   </style>
 </head>
 
 <body>
-  <main>
+  <!-- Barra de navegação -->
+  <header class="header">
     <nav class="navbar">
-      <img src="imgs/logo.png" alt="Logo da Loja" height="50px">
-      <div class="menu-toggle" id="menu-toggle">
-        <span class="bar"></span>
-        <span class="bar"></span>
-        <span class="bar"></span>
+      <div class="navbar-container">
+        <a href="index.html" class="logo-link">
+          <img src="imgs/logo.png" alt="Andreani Massas Artesanais" class="logo" width="120">
+        </a>
+        
+        <div class="menu-toggle" id="menu-toggle" aria-label="Menu mobile">
+          <span class="bar"></span>
+          <span class="bar"></span>
+          <span class="bar"></span>
+        </div>
+        
+        <ul class="nav-menu" id="nav-menu">
+          <li class="nav-item"><a href="index.html" class="nav-link">Início</a></li>
+          
+          <li class="nav-item"><a href="produtos.html" class="nav-link active">Nossas Massas</a></li>
+          <li class="nav-item"><a href="contato.html" class="nav-link">Contato</a></li>
+          <li class="nav-item highlight"><a href="https://wa.me/+5531984711401" class="nav-link whatsapp-link" target="_blank">
+            <i class="fab fa-whatsapp"></i> Pedir agora
+          </a></li>
+        </ul>
       </div>
-      <ul class="menu" id="menu">
-        <li><a href="index.html">Início</a></li>
-        <li><a href="historia.html">História</a></li>
-        <li><a href="produtos.html">Produtos</a></li>
-        <li><a href="contato.html">Contato</a></li>
-      </ul>
     </nav>
+  </header>
 
-    <div class="nome">
-      <h1>Andreani</h1>
+  <main>
+    <!-- Hero Section -->
+    <section class="products-hero">
+      <h1>Nossas Massas Artesanais</h1>
+      <p>Conheça nossa linha completa de massas feitas com ingredientes selecionados e receitas tradicionais italianas</p>
+    </section>
+
+    <!-- Categorias -->
+    <div class="products-container">
+      <div class="product-categories">
+        <button class="category-btn active">Todas</button>
+        <button class="category-btn">Lasanhas</button>
+        <button class="category-btn">Massas Frescas</button>
+        <button class="category-btn">Massas Recheadas</button>
+        <button class="category-btn">Especiais</button>
+      </div>
+
+      <!-- Grid de Produtos -->
+      <div class="products-grid">
+        <!-- Produto 1 -->
+        <div class="product-card">
+          <img src="imgs/Canelloni - Andreani.jpeg" alt="Canelloni" class="product-image">
+          <div class="product-info">
+            <h3 class="product-name">Canelloni</h3>
+            <p class="product-description">Massa fresca recheada com ricota e espinafre, coberta com molho de tomate caseiro.</p>
+            
+            <div class="product-cta">
+              <a href="https://wa.me/+5531984711401?text=Gostaria%20de%20pedir%20Canelloni" class="whatsapp-btn" target="_blank">
+                <i class="fab fa-whatsapp"></i> Pedir
+              </a>
+              
+            </div>
+          </div>
+        </div>
+
+        <!-- Produto 2 -->
+        <div class="product-card">
+          <img src="imgs/Ls.jpeg" alt="Lasanha" class="product-image">
+          <div class="product-info">
+            <h3 class="product-name">Lasanha</h3>
+            <p class="product-description">Camadas de massa fresca com molho bolonhesa e queijos derretidos, assada no forno.</p>
+            
+            <div class="product-cta">
+              <a href="https://wa.me/+5531984711401?text=Gostaria%20de%20pedir%20Lasanha" class="whatsapp-btn" target="_blank">
+                <i class="fab fa-whatsapp"></i> Pedir
+              </a>
+              
+            </div>
+          </div>
+        </div>
+
+        <!-- Produto 3 -->
+        <div class="product-card">
+          <img src="imgs/LasagnaClassica.jpg" alt="Lasagna Clássica" class="product-image">
+          <div class="product-info">
+            <h3 class="product-name">Lasagna Clássica</h3>
+            <p class="product-description">Receita tradicional italiana com massa fresca, molho branco e queijos especiais.</p>
+            
+            <div class="product-cta">
+              <a href="https://wa.me/+5531984711401?text=Gostaria%20de%20pedir%20Lasagna%20Clássica" class="whatsapp-btn" target="_blank">
+                <i class="fab fa-whatsapp"></i> Pedir
+              </a>
+              
+            </div>
+          </div>
+        </div>
+
+        <!-- Produto 4 -->
+        <div class="product-card">
+          <img src="imgs/Nhoque - Andreani.jpeg" alt="Nhoque" class="product-image">
+          <div class="product-info">
+            <h3 class="product-name">Nhoque</h3>
+            <p class="product-description">Nhoque de batata caseiro, macio por dentro e levemente dourado por fora.</p>
+            
+            <div class="product-cta">
+              <a href="https://wa.me/+5531984711401?text=Gostaria%20de%20pedir%20Nhoque" class="whatsapp-btn" target="_blank">
+                <i class="fab fa-whatsapp"></i> Pedir
+              </a>
+              
+            </div>
+          </div>
+        </div>
+
+        <!-- Produto 5 -->
+        <div class="product-card">
+          <img src="imgs/Raviole Verde - Andreani.jpeg" alt="Ravioli" class="product-image">
+          <div class="product-info">
+            <h3 class="product-name">Ravioli</h3>
+            <p class="product-description">Massa fina recheada com queijos especiais e ervas finas, servida com molho à escolha.</p>
+            
+            <div class="product-cta">
+              <a href="https://wa.me/+5531984711401?text=Gostaria%20de%20pedir%20Ravioli" class="whatsapp-btn" target="_blank">
+                <i class="fab fa-whatsapp"></i> Pedir
+              </a>
+              
+            </div>
+          </div>
+        </div>
+
+        <!-- Produto 6 -->
+        <div class="product-card">
+          <img src="imgs/Talharim - Andreani.jpeg" alt="Talharim" class="product-image">
+          <div class="product-info">
+            <h3 class="product-name">Talharim</h3>
+            <p class="product-description">Massa fresca cortada em tiras largas, perfeita para molhos encorpados.</p>
+            
+            <div class="product-cta">
+              <a href="https://wa.me/+5531984711401?text=Gostaria%20de%20pedir%20Talharim" class="whatsapp-btn" target="_blank">
+                <i class="fab fa-whatsapp"></i> Pedir
+              </a>
+              
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
-    <div class="container">
-      <!-- Card do Produto 1 -->
-      <div class="card">
-          <img src="imgs/Canelloni - Andreani.jpeg" alt="Produto 1" class="product-image">
-          <div class="product-info">
-              <h2 class="product-name">Canelloni</h2>
-              <a href="https://wa.me/+5531984711401" target="_blank" class="whatsapp-button">Comprar no WhatsApp</a>
-          </div>
+
+    <!-- Seção de Destaque -->
+    <section class="cta-section">
+      <div class="container">
+        <h2>Não encontrou o que procura?</h2>
+        <p>Temos outros produtos especiais disponíveis. Entre em contato conosco!</p>
+        <a href="https://wa.me/+5531984711401" class="btn btn-whatsapp-lg" target="_blank">
+          <i class="fab fa-whatsapp"></i> Fale conosco
+        </a>
       </div>
-
-      <!-- Card do Produto 2 -->
-      <div class="card">
-          <img src="imgs/Ls.jpeg" alt="Produto 2" class="product-image">
-          <div class="product-info">
-              <h2 class="product-name">Lasanha</h2>
-              <a href="https://wa.me/+5531984711401" target="_blank" class="whatsapp-button">Comprar no WhatsApp</a>
-          </div>
-      </div>
-
-      <!-- Card do Produto 3 -->
-      <div class="card">
-          <img src="imgs/LasagnaClassica.jpg" alt="Produto 3" class="product-image">
-          <div class="product-info">
-              <h2 class="product-name">Lasagna classica</h2>
-              <a href="https://wa.me/+5531984711401" target="_blank" class="whatsapp-button">Comprar no WhatsApp</a>
-          </div>
-      </div>
-
-      <!-- Card do Produto 4 -->
-      <div class="card">
-          <img src="imgs/Nhoque - Andreani.jpeg" alt="Produto 4" class="product-image">
-          <div class="product-info">
-              <h2 class="product-name">Nhoque</h2>
-              <a href="https://wa.me/+5531984711401" target="_blank" class="whatsapp-button">Comprar no WhatsApp</a>
-          </div>
-      </div>
-
-      <!-- Adicione mais cards conforme necessário -->
-  </div>
-
-    <footer>
-      <div class="footer-container">
-        <div class="social-media">
-          <h2>Siga-nos</h2>
-          <div class="social-icons">
-            <a href="https://wa.me/+5531984711401" class="icon"><img src="imgs/wzpp.png" alt="WhatsApp"></a>
-            <a href="https://wa.me/+5531984711401" class="icon">
-              <p>WhatsApp</p>
-            </a>
-            <a href="https://www.instagram.com/massasandreani/" class="icon"><img src="/imgs/insta.png"
-                alt="Instagram"></a>
-            <a href="https://www.instagram.com/massasandreani/" class="icon">
-              <p>Instagram</p>
-            </a>
-
-          </div>
-          <br>
-          <p>Rua Professor Raimundo Nonato, 63</p>
-          <p>Santa Tereza, Belo Horizonte</p>
-        </div>
-
-        <div class="logo">
-          <img src="imgs/logo.png" alt="Andreani Massas">
-        </div>
-      </div>
-    </footer>
+    </section>
   </main>
-  <script src="script.js"></script>
-</body>
 
+  <!-- Rodapé -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-logo">
+          <img src="imgs/logo.png" alt="Andreani Massas" width="150">
+          <p>Tradição italiana em massas artesanais</p>
+        </div>
+        
+        <div class="footer-links">
+          <h3>Links Rápidos</h3>
+          <ul>
+            <li><a href="index.html">Início</a></li>
+            <li><a href="historia.html">Nossa História</a></li>
+            <li><a href="produtos.html">Nossas Massas</a></li>
+            <li><a href="contato.html">Contato</a></li>
+          </ul>
+        </div>
+        
+        <div class="footer-contact">
+          <h3>Contato</h3>
+          <p><i class="fas fa-map-marker-alt"></i> Rua Prof. Raimundo Nonato, 63</p>
+          <p><i class="fas fa-phone-alt"></i> (31) 3461-3969</p>
+          <p><i class="fas fa-envelope"></i> massasandreani@yahoo.com.br</p>
+        </div>
+      </div>
+      
+      <div class="footer-bottom">
+        <div class="copyright">
+          &copy; <span id="year"></span> Massas Andreani. Todos os direitos reservados.
+        </div>
+        <div class="social-links">
+          <a href="https://wa.me/+5531984711401" class="social-icon" target="_blank" aria-label="WhatsApp">
+            <i class="fab fa-whatsapp"></i>
+          </a>
+          <a href="https://www.instagram.com/massasandreani/" class="social-icon" target="_blank" aria-label="Instagram">
+            <i class="fab fa-instagram"></i>
+          </a>
+          <a href="https://www.facebook.com/massasandreani" class="social-icon" target="_blank" aria-label="Facebook">
+            <i class="fab fa-facebook-f"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Botão flutuante do WhatsApp -->
+  <a href="https://wa.me/+5531984711401" class="float-whatsapp" target="_blank" aria-label="Fale conosco no WhatsApp">
+    <i class="fab fa-whatsapp"></i>
+  </a>
+
+  <script>
+    // Atualiza o ano no copyright
+    document.getElementById('year').textContent = new Date().getFullYear();
+    
+    // Menu mobile
+    const menuToggle = document.getElementById('menu-toggle');
+    const navMenu = document.getElementById('nav-menu');
+    
+    menuToggle.addEventListener('click', () => {
+      navMenu.classList.toggle('active');
+      menuToggle.classList.toggle('active');
+    });
+    
+    // Filtro de categorias
+    const categoryBtns = document.querySelectorAll('.category-btn');
+    
+    categoryBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        categoryBtns.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        // Aqui você adicionaria a lógica para filtrar os produtos
+      });
+    });
+    
+    // Botões de informação
+    const infoBtns = document.querySelectorAll('.info-btn');
+    
+    infoBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        // Aqui você pode adicionar um modal ou expandir as informações do produto
+        alert('Mais informações sobre o produto em breve!');
+      });
+    });
+  </script>
+</body>
 </html>
