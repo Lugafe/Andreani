@@ -7,30 +7,271 @@
   <meta name="description" content="Massas artesanais Andreani - Tradição italiana em Belo Horizonte">
   <meta name="keywords" content="massas, lasanha, comida italiana, belo horizonte">
   <title>Andreani Massas Artesanais | Tradição Italiana em BH</title>
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Playwrite+IN:wght@100..400&family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Playwrite+IN:wght@100..400&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <style>
-    /* Estilos para o carrossel */
-    /* Estilos para o carrossel */
-.hero-carousel {
-  position: relative;
-  flex: 1;
-  border-radius: 20px;
-  overflow: hidden;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-  height: 500px; /* Ajuste este valor conforme necessário para o seu design */
-}
-    
+    :root {
+      --primary-color: #8B0000;
+      --secondary-color: #402020;
+      --accent-color: #25D366;
+      --light-color: #F8F8F8;
+      --dark-color: #333333;
+      --text-color: #444444;
+      --white: #FFFFFF;
+      --transition: all 0.3s ease;
+      --shadow-sm: 0 2px 5px rgba(0, 0, 0, 0.1);
+      --shadow-md: 0 5px 15px rgba(0, 0, 0, 0.1);
+      --shadow-lg: 0 10px 25px rgba(0, 0, 0, 0.15);
+      --border-radius: 12px;
+      --max-width: 1200px;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      color: var(--text-color);
+      line-height: 1.6;
+      background-color: var(--white);
+      overflow-x: hidden;
+    }
+
+    h1, h2, h3, h4 {
+      font-weight: 600;
+      color: var(--secondary-color);
+      line-height: 1.2;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    ul {
+      list-style: none;
+    }
+
+    img {
+      max-width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    .container {
+      width: 100%;
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 0.8rem 1.5rem;
+      border-radius: 50px;
+      font-weight: 600;
+      text-align: center;
+      transition: var(--transition);
+      cursor: pointer;
+    }
+
+    .btn-primary {
+      background-color: var(--primary-color);
+      color: var(--white);
+    }
+
+    .btn-primary:hover {
+      background-color: var(--secondary-color);
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-md);
+    }
+
+    .btn-outline {
+      border: 2px solid var(--primary-color);
+      color: var(--primary-color);
+      background-color: transparent;
+    }
+
+    .btn-outline:hover {
+      background-color: var(--primary-color);
+      color: var(--white);
+      transform: translateY(-2px);
+    }
+
+    .btn-whatsapp {
+      background-color: var(--accent-color);
+      color: var(--white);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .btn-whatsapp:hover {
+      background-color: #128C7E;
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-md);
+    }
+
+    .btn-whatsapp-lg {
+      padding: 1rem 2rem;
+      font-size: 1.1rem;
+    }
+
+    .section-title {
+      font-size: 2rem;
+      margin-bottom: 1.5rem;
+      position: relative;
+      text-align: center;
+    }
+
+    .divider {
+      width: 80px;
+      height: 3px;
+      background-color: var(--primary-color);
+      margin: 0 auto 2rem;
+    }
+
+    /* Header */
+    .header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 1000;
+      background-color: var(--white);
+      box-shadow: var(--shadow-sm);
+      transition: var(--transition);
+    }
+
+    .header.sticky {
+      box-shadow: var(--shadow-md);
+    }
+
+    .navbar {
+      padding: 1rem 0;
+    }
+
+    .navbar-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      height: 70px;
+      transition: var(--transition);
+    }
+
+    .nav-menu {
+      display: flex;
+      gap: 2rem;
+    }
+
+    .nav-item {
+      position: relative;
+    }
+
+    .nav-link {
+      font-weight: 500;
+      transition: var(--transition);
+      padding: 0.5rem 0;
+    }
+
+    .nav-link:hover, .nav-link.active {
+      color: var(--primary-color);
+    }
+
+    .nav-link.active::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background-color: var(--primary-color);
+    }
+
+    .highlight .nav-link {
+      background-color: var(--primary-color);
+      color: var(--white);
+      padding: 0.5rem 1rem;
+      border-radius: 50px;
+    }
+
+    .highlight .nav-link:hover {
+      background-color: var(--secondary-color);
+    }
+
+    .menu-toggle {
+      display: none;
+      flex-direction: column;
+      justify-content: space-between;
+      width: 30px;
+      height: 21px;
+      cursor: pointer;
+      z-index: 1001;
+    }
+
+    .bar {
+      width: 100%;
+      height: 3px;
+      background-color: var(--secondary-color);
+      transition: var(--transition);
+    }
+
+    /* Hero Section */
+    .hero {
+      padding: 8rem 0 4rem;
+      background: linear-gradient(135deg, #f5f5f5 0%, #e0e0e0 100%);
+    }
+
+    .hero-content {
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+
+    .hero-title {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+      color: var(--secondary-color);
+    }
+
+    .hero-subtitle {
+      font-size: 1.2rem;
+      max-width: 700px;
+      margin: 0 auto 2rem;
+    }
+
+    .hero-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    /* Carrossel */
+    .hero-carousel {
+      position: relative;
+      max-width: 800px;
+      margin: 0 auto;
+      border-radius: var(--border-radius);
+      overflow: hidden;
+      box-shadow: var(--shadow-lg);
+      aspect-ratio: 16/9;
+    }
+
     .carousel-inner {
       position: relative;
       width: 100%;
       height: 100%;
       overflow: hidden;
     }
-    
+
     .carousel-item {
       position: absolute;
       top: 0;
@@ -38,20 +279,20 @@
       width: 100%;
       height: 100%;
       opacity: 0;
-      transition: opacity 1s ease-in-out;
+      transition: opacity 0.8s ease-in-out;
     }
-    
+
     .carousel-item.active {
       opacity: 1;
       z-index: 1;
     }
-    
+
     .carousel-item img {
       width: 100%;
       height: 100%;
       object-fit: cover;
     }
-    
+
     .carousel-indicators {
       position: absolute;
       bottom: 20px;
@@ -61,7 +302,7 @@
       gap: 10px;
       z-index: 2;
     }
-    
+
     .indicator {
       width: 12px;
       height: 12px;
@@ -69,22 +310,380 @@
       border: none;
       background-color: rgba(255, 255, 255, 0.5);
       cursor: pointer;
-      transition: all 0.3s ease;
+      transition: var(--transition);
     }
-    
+
     .indicator.active {
-      background-color: white;
+      background-color: var(--white);
       transform: scale(1.2);
     }
-    
+
+    /* Featured Product */
+    .featured-product {
+      padding: 5rem 0;
+      background-color: var(--light-color);
+    }
+
+    .featured-product .container {
+      display: flex;
+      align-items: center;
+      gap: 3rem;
+    }
+
+    .product-image {
+      flex: 1;
+      border-radius: var(--border-radius);
+      overflow: hidden;
+      box-shadow: var(--shadow-md);
+    }
+
+    .product-image img {
+      width: 100%;
+      height: auto;
+      transition: var(--transition);
+    }
+
+    .product-image:hover img {
+      transform: scale(1.03);
+    }
+
+    .product-info {
+      flex: 1;
+    }
+
+    .product-description {
+      margin-bottom: 1.5rem;
+    }
+
+    .product-highlights {
+      margin-bottom: 2rem;
+    }
+
+    .highlight-item {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .highlight-item i {
+      color: var(--primary-color);
+    }
+
+    /* CTA Section */
+    .cta-section {
+      padding: 5rem 0;
+      text-align: center;
+      background-color: var(--primary-color);
+      color: var(--white);
+    }
+
+    .cta-section h2 {
+      color: var(--white);
+      margin-bottom: 1rem;
+    }
+
+    .cta-section p {
+      margin-bottom: 2rem;
+      font-size: 1.1rem;
+    }
+
+    /* Opening Hours */
+    .opening-hours {
+      padding: 5rem 0;
+      text-align: center;
+    }
+
+    .hours-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1.5rem;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .day-card {
+      background-color: var(--white);
+      padding: 1.5rem;
+      border-radius: var(--border-radius);
+      box-shadow: var(--shadow-sm);
+      transition: var(--transition);
+    }
+
+    .day-card:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--shadow-md);
+    }
+
+    .day-card h3 {
+      margin-bottom: 0.5rem;
+    }
+
+    .day-card.highlight {
+      background-color: var(--primary-color);
+      color: var(--white);
+    }
+
+    .day-card.highlight h3 {
+      color: var(--white);
+    }
+
+    .notice {
+      margin-top: 2rem;
+      font-style: italic;
+    }
+
+    /* Location */
+    .location {
+      padding: 5rem 0;
+      background-color: var(--light-color);
+    }
+
+    .location .container {
+      display: flex;
+      gap: 3rem;
+    }
+
+    .location-info {
+      flex: 1;
+    }
+
+    .info-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .info-item i {
+      color: var(--primary-color);
+      margin-top: 0.3rem;
+    }
+
+    .social-links {
+      display: flex;
+      gap: 1rem;
+      margin-top: 2rem;
+    }
+
+    .social-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background-color: var(--primary-color);
+      color: var(--white);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: var(--transition);
+    }
+
+    .social-icon:hover {
+      background-color: var(--secondary-color);
+      transform: translateY(-3px);
+    }
+
+    .location-map {
+      flex: 1;
+      border-radius: var(--border-radius);
+      overflow: hidden;
+      box-shadow: var(--shadow-md);
+      height: 400px;
+    }
+
+    .location-map iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+
+    /* Footer */
+    .footer {
+      background-color: var(--secondary-color);
+      color: var(--white);
+      padding: 4rem 0 2rem;
+    }
+
+    .footer-content {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 3rem;
+      margin-bottom: 3rem;
+    }
+
+    .footer-logo img {
+      margin-bottom: 1rem;
+    }
+
+    .footer-logo p {
+      opacity: 0.8;
+    }
+
+    .footer-links h3, .footer-contact h3 {
+      color: var(--white);
+      margin-bottom: 1.5rem;
+      font-size: 1.2rem;
+    }
+
+    .footer-links li {
+      margin-bottom: 0.8rem;
+    }
+
+    .footer-links a:hover {
+      color: var(--primary-color);
+    }
+
+    .footer-contact p {
+      margin-bottom: 0.5rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .footer-bottom {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-top: 2rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .copyright {
+      opacity: 0.8;
+    }
+
+    /* WhatsApp Float */
+    .float-whatsapp {
+      position: fixed;
+      bottom: 2rem;
+      right: 2rem;
+      width: 60px;
+      height: 60px;
+      background-color: var(--accent-color);
+      color: var(--white);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      box-shadow: var(--shadow-lg);
+      z-index: 999;
+      transition: var(--transition);
+    }
+
+    .float-whatsapp:hover {
+      transform: scale(1.1);
+      background-color: #128C7E;
+    }
+
+    /* Responsividade */
+    @media (max-width: 1024px) {
+      .hero-title {
+        font-size: 2.2rem;
+      }
+      
+      .featured-product .container, .location .container {
+        flex-direction: column;
+      }
+      
+      .product-image, .location-map {
+        width: 100%;
+        max-width: 600px;
+        margin: 0 auto;
+      }
+    }
+
     @media (max-width: 768px) {
-      .hero-carousel {
-        height: 300px;
-        margin-top: 30px;
+      .menu-toggle {
+        display: flex;
+      }
+      
+      .nav-menu {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 80%;
+        max-width: 300px;
+        height: 100vh;
+        background-color: var(--white);
+        flex-direction: column;
+        padding: 6rem 2rem 2rem;
+        box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+        transition: var(--transition);
+      }
+      
+      .nav-menu.active {
+        right: 0;
+      }
+      
+      .menu-toggle.active .bar:nth-child(1) {
+        transform: translateY(9px) rotate(45deg);
+      }
+      
+      .menu-toggle.active .bar:nth-child(2) {
+        opacity: 0;
+      }
+      
+      .menu-toggle.active .bar:nth-child(3) {
+        transform: translateY(-9px) rotate(-45deg);
+      }
+      
+      .hero {
+        padding: 6rem 0 3rem;
+      }
+      
+      .hero-title {
+        font-size: 2rem;
+      }
+      
+      .hero-subtitle {
+        font-size: 1rem;
+      }
+      
+      .hero-buttons {
+        flex-direction: column;
+        align-items: center;
+      }
+      
+      .btn {
+        width: 100%;
+        max-width: 250px;
+      }
+      
+      .section-title {
+        font-size: 1.8rem;
       }
       
       .carousel-indicators {
         bottom: 10px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .container {
+        padding: 0 1rem;
+      }
+      
+      .hero-title {
+        font-size: 1.8rem;
+      }
+      
+      .hours-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .footer-bottom {
+        flex-direction: column;
+        gap: 1rem;
+        text-align: center;
+      }
+      
+      .float-whatsapp {
+        width: 50px;
+        height: 50px;
+        font-size: 1.2rem;
+        bottom: 1rem;
+        right: 1rem;
       }
     }
   </style>
@@ -94,9 +693,9 @@
   <!-- Barra de navegação -->
   <header class="header">
     <nav class="navbar">
-      <div class="navbar-container">
+      <div class="navbar-container container">
         <a href="index.html" class="logo-link">
-          <img src="imgs/logo.png" alt="Andreani Massas Artesanais" class="logo" width="70">
+          <img src="imgs/logo.png" alt="Andreani Massas Artesanais" class="logo">
         </a>
         
         <div class="menu-toggle" id="menu-toggle" aria-label="Menu mobile">
@@ -118,41 +717,42 @@
   </header>
 
   <main>
-    <!-- Hero Section com Carrossel -->
+    <!-- Hero Section -->
     <section class="hero">
-      <div class="hero-content">
-        <h1 class="hero-title">Massas Artesanais com Tradição Italiana</h1>
-        <p class="hero-subtitle">Feitas com ingredientes selecionados e receitas familiares</p>
-        <div class="hero-buttons">
-          <a href="produtos.html" class="btn btn-primary">Conheça nossos produtos</a>
-          <a href="https://wa.me/+5531984711401" class="btn btn-whatsapp" target="_blank">
-            <i class="fab fa-whatsapp"></i> Faça seu pedido
-          </a>
-        </div>
-      </div>
-      
-      <div class="hero-carousel">
-        <div class="carousel-inner">
-          <div class="carousel-item active">
-            <img src="imgs/LasagnaClassica.jpg" alt="Variedade de massas artesanais" loading="lazy">
-          </div>
-          <div class="carousel-item">
-            <img src="imgs/Canelloni Verde - Andreani.jpeg" alt="Lasanha artesanal" loading="lazy">
-          </div>
-          <div class="carousel-item">
-            <img src="imgs/Mini Pizza - Andreani.jpeg" alt="Nhoque caseiro" loading="lazy">
-          </div>
-          <div class="carousel-item">
-            <img src="imgs/Rondelli - Andreani.jpeg" alt="Ravioli especial" loading="lazy">
+      <div class="container">
+        <div class="hero-content">
+          <h1 class="hero-title">Massas Artesanais com Tradição Italiana</h1>
+          <p class="hero-subtitle">Feitas com ingredientes selecionados e receitas familiares</p>
+          <div class="hero-buttons">
+            <a href="produtos.html" class="btn btn-primary">Conheça nossos produtos</a>
+            <a href="https://wa.me/+5531984711401" class="btn btn-whatsapp" target="_blank">
+              <i class="fab fa-whatsapp"></i> Faça seu pedido
+            </a>
           </div>
         </div>
         
-        <!-- Indicadores do carrossel -->
-        <div class="carousel-indicators">
-          <button class="indicator active" aria-label="Slide 1"></button>
-          <button class="indicator" aria-label="Slide 2"></button>
-          <button class="indicator" aria-label="Slide 3"></button>
-          <button class="indicator" aria-label="Slide 4"></button>
+        <div class="hero-carousel">
+          <div class="carousel-inner">
+            <div class="carousel-item active">
+              <img src="imgs/LasagnaClassica.jpg" alt="Variedade de massas artesanais" loading="lazy">
+            </div>
+            <div class="carousel-item">
+              <img src="imgs/Canelloni Verde - Andreani.jpeg" alt="Lasanha artesanal" loading="lazy">
+            </div>
+            <div class="carousel-item">
+              <img src="imgs/Mini Pizza - Andreani.jpeg" alt="Nhoque caseiro" loading="lazy">
+            </div>
+            <div class="carousel-item">
+              <img src="imgs/Rondelli - Andreani.jpeg" alt="Ravioli especial" loading="lazy">
+            </div>
+          </div>
+          
+          <div class="carousel-indicators">
+            <button class="indicator active" aria-label="Slide 1"></button>
+            <button class="indicator" aria-label="Slide 2"></button>
+            <button class="indicator" aria-label="Slide 3"></button>
+            <button class="indicator" aria-label="Slide 4"></button>
+          </div>
         </div>
       </div>
     </section>
@@ -264,7 +864,7 @@
         <div class="location-map">
           <iframe
             src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3762.6491522054455!2d-43.9286318855513!3d-19.92105548660186!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xa699f1e8f0a285%3A0x5b7d8129ea79ef32!2sRua%20Professor%20Raimundo%20Nonato%2C%2063%20-%20Santa%20Tereza%2C%20Belo%20Horizonte%20-%20MG%2C%2031010-520!5e0!3m2!1spt-BR!2sbr!4v1694728716018!5m2!1spt-BR!2sbr"
-            width="100%" height="400" style="border:0;" allowfullscreen="" loading="lazy"
+            width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"
             referrerpolicy="no-referrer-when-downgrade" title="Localização da Massas Andreani">
           </iframe>
         </div>
@@ -285,7 +885,6 @@
           <h3>Links Rápidos</h3>
           <ul>
             <li><a href="index.html">Início</a></li>
-            
             <li><a href="produtos.html">Nossas Massas</a></li>
             <li><a href="contato.html">Contato</a></li>
           </ul>
@@ -294,7 +893,7 @@
         <div class="footer-contact">
           <h3>Contato</h3>
           <p><i class="fas fa-map-marker-alt"></i> Rua Prof. Raimundo Nonato, 63</p>
-          <p><i class="fas fa-phone-alt"></i>  (31) 3274-5019</p>
+          <p><i class="fas fa-phone-alt"></i> (31) 3461-3969</p>
           <p><i class="fas fa-envelope"></i> massasandreani@yahoo.com.br</p>
         </div>
       </div>
