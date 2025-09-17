@@ -752,7 +752,7 @@
             <a href="https://wa.me/+5531984711401" class="btn btn-whatsapp" target="_blank">
               <i class="fab fa-whatsapp"></i> Faça seu pedido
             </a>
-            <a href="cardapio.pdf" class="btn btn-download" download>
+            <a href="CMA.pdf" class="btn btn-download" download="Cardapio_Andreani.pdf">
               <i class="fas fa-download"></i> Baixar Cardápio
             </a>
           </div>
@@ -1030,6 +1030,26 @@
           // Reinicia o intervalo
           carouselInterval = setInterval(changeSlide, intervalTime);
         });
+      });
+
+      // Função para forçar download do cardápio
+      const downloadButton = document.querySelector('.btn-download');
+      
+      downloadButton.addEventListener('click', function(e) {
+        // Verifica se o navegador suporta a API de download
+        if (typeof document.createElement('a').download !== 'undefined') {
+          // Cria um link temporário para forçar o download
+          const link = document.createElement('a');
+          link.href = 'CMA.pdf';
+          link.download = 'Cardapio_Andreani.pdf';
+          document.body.appendChild(link);
+          link.click();
+          document.body.removeChild(link);
+          
+          // Previne o comportamento padrão do link
+          e.preventDefault();
+        }
+        // Se o navegador não suportar a API, o comportamento padrão do link será executado
       });
     });
   </script>
