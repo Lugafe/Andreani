@@ -101,7 +101,7 @@
       font-size: 1.1rem;
     }
 
-    /* Header */
+    /* Header - CORREÇÃO APLICADA: Altura fixa e padding-top no main */
     .header {
       position: fixed;
       top: 0;
@@ -111,16 +111,19 @@
       background-color: var(--white);
       box-shadow: var(--shadow-sm);
       transition: var(--transition);
+      height: 100px; /* Altura fixa para calcular o padding-top */
     }
 
     .navbar {
       padding: 1rem 0;
+      height: 100%;
     }
 
     .navbar-container {
       display: flex;
       justify-content: space-between;
       align-items: center;
+      height: 100%;
     }
 
     .logo {
@@ -186,13 +189,14 @@
       transition: var(--transition);
     }
 
-    /* Hero Section */
+    /* Hero Section - CORREÇÃO APLICADA: padding-top para compensar header fixo */
     .products-hero {
       background: linear-gradient(rgba(0, 0, 0, 0.6)), url('imgs/hero-produtos.jpg') center/cover no-repeat;
       color: var(--white);
       text-align: center;
       padding: 8rem 1.5rem 4rem;
       margin-bottom: 3rem;
+      padding-top: 120px; /* Compensa a altura do header fixo */
     }
 
     .products-hero h1 {
@@ -279,20 +283,22 @@
       font-family: 'Playwrite IN', serif;
       font-size: 1.5rem;
       color: var(--secondary-color);
-      margin-bottom: 0.8rem;
+      margin-bottom: 1rem; /* Aumentado para criar espaço */
     }
 
-    .product-description {
+    /* CORREÇÃO APLICADA: Removida a descrição do produto */
+    /* .product-description {
       color: #666;
       margin-bottom: 1.5rem;
       flex: 1;
-    }
+    } */
 
     .product-variations {
       margin-bottom: 1.5rem;
       max-height: 150px;
       overflow-y: auto;
       padding-right: 0.5rem;
+      flex: 1; /* Ocupa o espaço disponível */
     }
 
     .product-variations::-webkit-scrollbar {
@@ -326,6 +332,7 @@
       justify-content: space-between;
       align-items: center;
       gap: 0.5rem;
+      margin-top: auto; /* Garante que fique na parte inferior */
     }
 
     .whatsapp-btn {
@@ -526,6 +533,7 @@
 
       .products-hero {
         padding: 6rem 1rem 3rem;
+        padding-top: 100px; /* Ajuste para mobile */
       }
 
       .products-hero h1 {
@@ -679,8 +687,6 @@
           <img src="imgs/Canelloni - Andreani.jpeg" alt="Canelloni" class="product-image">
           <div class="product-info">
             <h3 class="product-name">Canelloni</h3>
-            <p class="product-description">Massa fresca recheada com ricota e espinafre, coberta com molho de tomate
-              caseiro.</p>
             <div class="product-variations">
               <div class="variation-item">
                 <span>Caneloni à Bolonhesa</span>
@@ -711,8 +717,6 @@
           <img src="imgs/Capelleti - Andreani.jpeg" alt="Capelletti" class="product-image">
           <div class="product-info">
             <h3 class="product-name">Capelletti</h3>
-            <p class="product-description">Pequenos pastéis de massa fresca recheados com carne ou queijo, típicos da
-              Emilia-Romagna.</p>
             <div class="product-variations">
               <div class="variation-item">
                 <span>Capeleti de Frango</span>
@@ -740,8 +744,6 @@
           <img src="imgs/Raviole Verde - Andreani.jpeg" alt="Ravioli" class="product-image">
           <div class="product-info">
             <h3 class="product-name">Ravioli</h3>
-            <p class="product-description">Massa fina recheada com queijos especiais e ervas finas, servida com molho à
-              escolha.</p>
             <div class="product-variations">
               <div class="variation-item">
                 <span>Ravioli de Carne</span>
@@ -769,7 +771,6 @@
           <img src="imgs/Rondelli - Andreani.jpeg" alt="Rondelli" class="product-image">
           <div class="product-info">
             <h3 class="product-name">Rondelli</h3>
-            <p class="product-description">Massa fresca recheada em formato redondo, com recheios especiais.</p>
             <div class="product-variations">
               <div class="variation-item">
                 <span>Rondell Quatro Queijos</span>
@@ -803,7 +804,9 @@
           <img src="imgs/Nhoque - Andreani.jpeg" alt="Nhoque" class="product-image">
           <div class="product-info">
             <h3 class="product-name">Nhoque</h3>
-            <p class="product-description">Nhoque de batata caseiro, macio por dentro e levemente dourado por fora.</p>
+            <div class="product-variations">
+              <!-- Espaço em branco mantido para produtos sem variações -->
+            </div>
             <div class="product-cta">
               <a href="https://wa.me/+5531984711401?text=Gostaria%20de%20pedir%20Nhoque" class="whatsapp-btn"
                 target="_blank">
@@ -818,8 +821,6 @@
           <img src="imgs/Ls.jpeg" alt="Lasanha" class="product-image">
           <div class="product-info">
             <h3 class="product-name">Lasanha</h3>
-            <p class="product-description">Camadas de massa fresca com molho bolonhesa e queijos derretidos, assada no
-              forno.</p>
             <div class="product-variations">
               <div class="variation-item">
                 <span>Lasanha à Bolonhesa</span>
@@ -851,8 +852,6 @@
           <img src="imgs/Spaghetti - Andreani.jpeg" alt="Espaguete" class="product-image">
           <div class="product-info">
             <h3 class="product-name">Espaguete</h3>
-            <p class="product-description">Massa longa e fina, tradicional da culinária italiana, perfeita com diversos
-              molhos.</p>
             <div class="product-variations">
               <div class="variation-item">
                 <span>Espaguete</span>
@@ -876,7 +875,6 @@
           <img src="imgs/Talharim - Andreani.jpeg" alt="Talharim" class="product-image">
           <div class="product-info">
             <h3 class="product-name">Talharim</h3>
-            <p class="product-description">Massa fresca cortada em tiras largas, perfeita para molhos encorpados.</p>
             <div class="product-variations">
               <div class="variation-item">
                 <span>Talharim</span>
@@ -901,8 +899,6 @@
           <img src="imgs/Salgados - Andreani.jpeg" alt="Salgados" class="product-image">
           <div class="product-info">
             <h3 class="product-name">Salgados</h3>
-            <p class="product-description">Seleção de salgados artesanais perfeitos para eventos e ocasiões especiais.
-            </p>
             <div class="product-variations">
               <div class="variation-item">
                 <span>Empada de Frango</span>
@@ -963,8 +959,6 @@
           <img src="imgs/Tortinhas - Andreani.jpeg" alt="Tortas" class="product-image">
           <div class="product-info">
             <h3 class="product-name">Tortas</h3>
-            <p class="product-description">Deliciosas tortas salgadas com recheios especiais, perfeitas para lanches.
-            </p>
             <div class="product-variations">
               <div class="variation-item">
                 <span>Torta de Frango</span>
@@ -1001,8 +995,9 @@
           <img src="imgs/Molho ao Sugo - Andreani.jpeg" alt="Molho ao Sugo" class="product-image">
           <div class="product-info">
             <h3 class="product-name">Molho ao Sugo</h3>
-            <p class="product-description">Molho de tomate tradicional italiano, preparado com tomates frescos e ervas
-              aromáticas.</p>
+            <div class="product-variations">
+              <!-- Espaço em branco mantido -->
+            </div>
             <div class="product-cta">
               <a href="https://wa.me/+5531984711401?text=Gostaria%20de%20pedir%20Molho%20ao%20Sugo" class="whatsapp-btn"
                 target="_blank">
@@ -1016,8 +1011,9 @@
           <img src="imgs/Molho Bolonhesa - Andreani.jpeg" alt="Molho Bolonhesa" class="product-image">
           <div class="product-info">
             <h3 class="product-name">Molho Bolonhesa</h3>
-            <p class="product-description">Clássico molho à bolonhesa preparado com carne moída de primeira qualidade e
-              tomates.</p>
+            <div class="product-variations">
+              <!-- Espaço em branco mantido -->
+            </div>
             <div class="product-cta">
               <a href="https://wa.me/+5531984711401?text=Gostaria%20de%20pedir%20Molho%20Bolonhesa" class="whatsapp-btn"
                 target="_blank">
@@ -1031,8 +1027,9 @@
           <img src="imgs/Molho Branco - Andreani.jpeg" alt="Molho Branco" class="product-image">
           <div class="product-info">
             <h3 class="product-name">Molho Branco</h3>
-            <p class="product-description">Cremoso molho branco preparado com manteiga, farinha, leite e noz-moscada.
-            </p>
+            <div class="product-variations">
+              <!-- Espaço em branco mantido -->
+            </div>
             <div class="product-cta">
               <a href="https://wa.me/+5531984711401?text=Gostaria%20de%20pedir%20Molho%20Branco" class="whatsapp-btn"
                 target="_blank">
@@ -1046,8 +1043,9 @@
           <img src="imgs/TagliatelleArtesanal.jpg" alt="Tagliatelle Artesanal" class="product-image">
           <div class="product-info">
             <h3 class="product-name">Tagliatelle Artesanal</h3>
-            <p class="product-description">Massa fresca cortada em tiras largas e achatadas, típica da região da
-              Emilia-Romagna.</p>
+            <div class="product-variations">
+              <!-- Espaço em branco mantido -->
+            </div>
             <div class="product-cta">
               <a href="https://wa.me/+5531984711401?text=Gostaria%20de%20pedir%20Tagliatelle%20Artesanal"
                 class="whatsapp-btn" target="_blank">
@@ -1061,7 +1059,6 @@
           <img src="imgs/Mini Pizza - Andreani.jpeg" alt="Mini Pizza" class="product-image">
           <div class="product-info">
             <h3 class="product-name">Mini Pizza</h3>
-            <p class="product-description">Pequenas pizzas artesanais perfeitas para entradas ou lanches.</p>
             <div class="product-variations">
               <div class="variation-item">
                 <span>Mini Pizza de Mussarela</span>
@@ -1086,7 +1083,9 @@
           <img src="imgs/Crepe - Andreani.jpeg" alt="Crepe" class="product-image">
           <div class="product-info">
             <h3 class="product-name">Crepe</h3>
-            <p class="product-description">Massa fina e versátil, perfeita para recheios doces ou salgados.</p>
+            <div class="product-variations">
+              <!-- Espaço em branco mantido -->
+            </div>
             <div class="product-cta">
               <a href="https://wa.me/+5531984711401?text=Gostaria%20de%20pedir%20Crepe" class="whatsapp-btn"
                 target="_blank">
