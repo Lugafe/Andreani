@@ -6,149 +6,270 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Nossas deliciosas massas artesanais - Tradição italiana em Belo Horizonte">
   <title>Nossos Produtos | Massas Andreani</title>
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link
     href="https://fonts.googleapis.com/css2?family=Playwrite+IN:wght@100..400&family=Poppins:wght@300;400;600;700&display=swap"
     rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
+    :root {
+      --primary-color: #8B0000;
+      --secondary-color: #402020;
+      --accent-color: #25D366;
+      --light-color: #f8f8f8;
+      --text-color: #333;
+      --white: #FFFFFF;
+      --transition: all 0.3s ease;
+      --shadow-sm: 0 2px 5px rgba(0, 0, 0, 0.1);
+      --shadow-md: 0 5px 15px rgba(0, 0, 0, 0.1);
+      --shadow-lg: 0 10px 25px rgba(0, 0, 0, 0.15);
+      --border-radius: 12px;
+      --max-width: 1200px;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      color: var(--text-color);
+      line-height: 1.6;
+      background-color: var(--white);
+    }
+
+    h1, h2, h3, h4 {
+      font-weight: 600;
+      color: var(--secondary-color);
+      line-height: 1.2;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    ul {
+      list-style: none;
+    }
+
+    img {
+      max-width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    .container {
+      width: 100%;
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 0.8rem 1.5rem;
+      border-radius: 50px;
+      font-weight: 600;
+      text-align: center;
+      transition: var(--transition);
+      cursor: pointer;
+      border: none;
+      font-family: inherit;
+    }
+
+    .btn-whatsapp {
+      background: var(--accent-color);
+      color: var(--white);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+    }
+
+    .btn-whatsapp:hover {
+      background: #128C7E;
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-md);
+    }
+
+    .btn-whatsapp-lg {
+      padding: 1rem 2rem;
+      font-size: 1.1rem;
+    }
+
+    /* Header */
     .header {
       position: fixed;
       top: 0;
       left: 0;
       width: 100%;
-      height: 15%;
       z-index: 1000;
-      background-color: white;
-      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-      display: flex;
-      justify-content: center;
-      /* Centraliza horizontalmente */
-      align-items: center;
-      /* Centraliza verticalmente */
+      background-color: var(--white);
+      box-shadow: var(--shadow-sm);
+      transition: var(--transition);
+    }
+
+    .navbar {
+      padding: 1rem 0;
     }
 
     .navbar-container {
-      width: 100%;
-      max-width: 1200px;
       display: flex;
       justify-content: space-between;
-      /* Mantém os itens distribuídos */
       align-items: center;
-      height: 100%;
-      /* Usa 100% da altura do header */
-      padding: 0 20px;
-    }
-
-    .logo-link {
-      display: flex;
-      align-items: center;
-      height: 100%;
     }
 
     .logo {
       height: 80px;
-      /* Reduzi um pouco para melhor ajuste */
       transition: var(--transition);
-      object-fit: contain;
-      /* Garante que a imagem não distorça */
     }
 
     .nav-menu {
       display: flex;
-      align-items: center;
-      height: 100%;
-      margin: 0;
-      padding: 0;
+      gap: 2rem;
     }
 
     .nav-item {
-      display: flex;
-      align-items: center;
-      height: 100%;
-      padding: 0 15px;
+      position: relative;
     }
 
-    /* Ajustes para o menu mobile */
+    .nav-link {
+      font-weight: 500;
+      transition: var(--transition);
+      padding: 0.5rem 0;
+    }
+
+    .nav-link:hover,
+    .nav-link.active {
+      color: var(--primary-color);
+    }
+
+    .nav-link.active::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background-color: var(--primary-color);
+    }
+
+    .highlight .nav-link {
+      background-color: var(--primary-color);
+      color: var(--white);
+      padding: 0.5rem 1rem;
+      border-radius: 50px;
+    }
+
+    .highlight .nav-link:hover {
+      background-color: var(--secondary-color);
+    }
+
     .menu-toggle {
       display: none;
-      /* Mantém escondido por padrão */
+      flex-direction: column;
+      justify-content: space-between;
+      width: 30px;
+      height: 21px;
+      cursor: pointer;
+      z-index: 1001;
     }
 
-    /* Ajustes para a seção hero */
-    .products-hero {
-      margin-top: 120px;
-      /* Aumentei para compensar o header maior */
-      padding-top: 40px;
+    .bar {
+      width: 100%;
+      height: 3px;
+      background-color: var(--secondary-color);
+      transition: var(--transition);
     }
 
-    /* Conteúdo principal */
-    main {
-      padding-top: 120px;
-      /* Ajustado para o novo tamanho do header */
-    }
-
+    /* Hero Section */
     .products-hero {
       background: linear-gradient(rgba(0, 0, 0, 0.6)), url('imgs/hero-produtos.jpg') center/cover no-repeat;
-      color: white;
+      color: var(--white);
       text-align: center;
-      padding: 60px 20px 80px;
-      /* Reduzi o padding superior */
-      margin-bottom: 60px;
-      margin-top: 80px;
-      /* Adicionei esta linha */
+      padding: 8rem 1.5rem 4rem;
+      margin-bottom: 3rem;
     }
 
     .products-hero h1 {
-      font-size: 3rem;
-      margin-bottom: 20px;
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+      color: var(--white);
     }
 
     .products-hero p {
       font-size: 1.2rem;
       max-width: 700px;
-      margin: 0 auto 30px;
+      margin: 0 auto 2rem;
     }
 
+    /* Product Categories */
+    .product-categories {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      margin-bottom: 3rem;
+      flex-wrap: wrap;
+      padding: 0 1.5rem;
+    }
+
+    .category-btn {
+      padding: 0.8rem 1.5rem;
+      background: var(--light-color);
+      border-radius: 50px;
+      cursor: pointer;
+      transition: var(--transition);
+      border: none;
+      font-family: inherit;
+      font-size: 1rem;
+      font-weight: 500;
+    }
+
+    .category-btn.active,
+    .category-btn:hover {
+      background: var(--primary-color);
+      color: var(--white);
+    }
+
+    /* Products Grid */
     .products-container {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 0 20px 60px;
+      padding: 0 1.5rem 4rem;
     }
 
     .products-grid {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      /* Mudado de auto-fill para 3 colunas fixas */
-      gap: 30px;
-      margin-top: 40px;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 2rem;
     }
 
     .product-card {
-      background: white;
-      border-radius: 12px;
+      background: var(--white);
+      border-radius: var(--border-radius);
       overflow: hidden;
-      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-      transition: all 0.3s ease;
+      box-shadow: var(--shadow-md);
+      transition: var(--transition);
       display: flex;
       flex-direction: column;
+      height: 100%;
     }
 
     .product-card:hover {
-      transform: translateY(-10px);
-      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+      transform: translateY(-5px);
+      box-shadow: var(--shadow-lg);
     }
 
     .product-image {
       width: 100%;
-      height: 250px;
+      height: 220px;
       object-fit: cover;
     }
 
     .product-info {
-      padding: 20px;
+      padding: 1.5rem;
       flex: 1;
       display: flex;
       flex-direction: column;
@@ -157,38 +278,70 @@
     .product-name {
       font-family: 'Playwrite IN', serif;
       font-size: 1.5rem;
-      color: #402020;
-      margin-bottom: 10px;
+      color: var(--secondary-color);
+      margin-bottom: 0.8rem;
     }
 
     .product-description {
       color: #666;
-      margin-bottom: 20px;
+      margin-bottom: 1.5rem;
       flex: 1;
     }
 
+    .product-variations {
+      margin-bottom: 1.5rem;
+      max-height: 150px;
+      overflow-y: auto;
+      padding-right: 0.5rem;
+    }
 
+    .product-variations::-webkit-scrollbar {
+      width: 4px;
+    }
+
+    .product-variations::-webkit-scrollbar-track {
+      background: #f1f1f1;
+      border-radius: 10px;
+    }
+
+    .product-variations::-webkit-scrollbar-thumb {
+      background: var(--primary-color);
+      border-radius: 10px;
+    }
+
+    .variation-item {
+      display: flex;
+      justify-content: space-between;
+      padding: 0.5rem 0;
+      border-bottom: 1px solid #eee;
+      font-size: 0.9rem;
+    }
+
+    .variation-item:last-child {
+      border-bottom: none;
+    }
 
     .product-cta {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      gap: 10px;
+      gap: 0.5rem;
     }
 
     .whatsapp-btn {
-      background: #25D366;
-      color: white;
-      padding: 12px 20px;
+      background: var(--accent-color);
+      color: var(--white);
+      padding: 0.8rem 1.2rem;
       border-radius: 50px;
       font-weight: 600;
       flex: 1;
       text-align: center;
-      transition: all 0.3s ease;
+      transition: var(--transition);
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 8px;
+      gap: 0.5rem;
+      font-size: 0.9rem;
     }
 
     .whatsapp-btn:hover {
@@ -196,522 +349,754 @@
       transform: translateY(-2px);
     }
 
+    /* CTA Section */
+    .cta-section {
+      background: var(--light-color);
+      padding: 4rem 1.5rem;
+      text-align: center;
+    }
 
+    .cta-section h2 {
+      color: var(--secondary-color);
+      margin-bottom: 1rem;
+    }
 
-    .product-categories {
+    .cta-section p {
+      color: #666;
+      max-width: 600px;
+      margin: 0 auto 2rem;
+    }
+
+    /* Footer */
+    .footer {
+      background: var(--secondary-color);
+      color: var(--white);
+      padding: 3rem 0 2rem;
+    }
+
+    .footer-content {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+      margin-bottom: 2rem;
+    }
+
+    .footer-logo img {
+      margin-bottom: 1rem;
+    }
+
+    .footer-links h3,
+    .footer-contact h3 {
+      margin-bottom: 1.5rem;
+      font-size: 1.2rem;
+    }
+
+    .footer-links li {
+      margin-bottom: 0.8rem;
+    }
+
+    .footer-links a,
+    .footer-contact p {
+      color: #ddd;
+      transition: var(--transition);
+    }
+
+    .footer-links a:hover {
+      color: var(--white);
+    }
+
+    .footer-contact p {
+      margin-bottom: 0.5rem;
       display: flex;
-      justify-content: center;
-      gap: 15px;
-      margin-bottom: 40px;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .footer-bottom {
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      padding-top: 1.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
       flex-wrap: wrap;
+      gap: 1rem;
     }
 
-    .category-btn {
-      padding: 10px 20px;
-      background: #f8f8f8;
-      border-radius: 50px;
-      cursor: pointer;
-      transition: all 0.3s ease;
+    .copyright {
+      opacity: 0.8;
     }
 
-    .category-btn.active,
-    .category-btn:hover {
-      background: #8B0000;
-      color: white;
+    .social-links {
+      display: flex;
+      gap: 1rem;
+    }
+
+    .social-icon {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 50%;
+      color: var(--white);
+      transition: var(--transition);
+    }
+
+    .social-icon:hover {
+      background: rgba(255, 255, 255, 0.2);
+      transform: translateY(-2px);
+    }
+
+    /* WhatsApp Float */
+    .float-whatsapp {
+      position: fixed;
+      bottom: 2rem;
+      right: 2rem;
+      width: 60px;
+      height: 60px;
+      background: var(--accent-color);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--white);
+      font-size: 1.5rem;
+      box-shadow: var(--shadow-lg);
+      z-index: 999;
+      transition: var(--transition);
+    }
+
+    .float-whatsapp:hover {
+      background: #128C7E;
+      transform: scale(1.1);
+    }
+
+    /* No Products Message */
+    .no-products {
+      grid-column: 1 / -1;
+      text-align: center;
+      padding: 3rem;
+      background: var(--light-color);
+      border-radius: var(--border-radius);
+    }
+
+    /* Responsividade */
+    @media (max-width: 1024px) {
+      .products-grid {
+        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+        gap: 1.5rem;
+      }
     }
 
     @media (max-width: 768px) {
-      .products-grid {
-        grid-template-columns: 1fr;
-        /* 1 coluna em mobile */
+      .menu-toggle {
+        display: flex;
       }
 
-      .header {
-        height: 60px;
-        /* Altura menor para mobile */
+      .nav-menu {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 80%;
+        max-width: 300px;
+        height: 100vh;
+        background-color: var(--white);
+        flex-direction: column;
+        padding: 6rem 2rem 2rem;
+        box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+        transition: var(--transition);
+      }
+
+      .nav-menu.active {
+        right: 0;
+      }
+
+      .menu-toggle.active .bar:nth-child(1) {
+        transform: translateY(9px) rotate(45deg);
+      }
+
+      .menu-toggle.active .bar:nth-child(2) {
+        opacity: 0;
+      }
+
+      .menu-toggle.active .bar:nth-child(3) {
+        transform: translateY(-9px) rotate(-45deg);
       }
 
       .products-hero {
-        margin-top: 60px;
-        padding-top: 40px;
-      }
-
-      main {
-        padding-top: 60px;
-      }
-      .products-hero {
-        padding: 100px 20px 60px;
+        padding: 6rem 1rem 3rem;
       }
 
       .products-hero h1 {
-        font-size: 2.2rem;
+        font-size: 2rem;
+      }
+
+      .products-hero p {
+        font-size: 1rem;
+      }
+
+      .product-categories {
+        gap: 0.5rem;
+        padding: 0 1rem;
+      }
+
+      .category-btn {
+        padding: 0.6rem 1.2rem;
+        font-size: 0.9rem;
+      }
+
+      .products-container {
+        padding: 0 1rem 3rem;
+      }
+
+      .products-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+      }
+
+      .product-card {
+        margin: 0 auto;
+        max-width: 400px;
       }
 
       .product-image {
         height: 200px;
       }
 
-      .header {
-        height: 80px;
-        /* Altura fixa para mobile */
+      .product-info {
+        padding: 1.2rem;
       }
 
-      .navbar-container {
-        justify-content: center;
-        /* Centraliza os itens no mobile */
-        position: relative;
+      .product-name {
+        font-size: 1.3rem;
       }
 
-      .logo {
-        height: 60px;
-        position: absolute;
-        left: 20px;
+      .product-variations {
+        max-height: 120px;
       }
 
-      .menu-toggle {
-        display: flex;
-        position: absolute;
-        right: 20px;
-      }
-
-      .nav-menu {
-        position: fixed;
-        top: 80px;
-        left: 0;
-        width: 100%;
+      .footer-bottom {
         flex-direction: column;
-        height: auto;
-        background: white;
-        box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
-        transform: translateY(-150%);
-        transition: transform 0.3s ease;
+        text-align: center;
       }
 
-      .nav-menu.active {
-        transform: translateY(0);
-      }
-
-      .nav-item {
-        width: 100%;
-        padding: 15px;
-        justify-content: center;
-      }
-
-      .products-hero,
-      main {
-        padding-top: 80px;
+      .float-whatsapp {
+        width: 50px;
+        height: 50px;
+        font-size: 1.2rem;
+        bottom: 1.5rem;
+        right: 1.5rem;
       }
     }
 
-    @media (max-width: 1024px) {
-      .products-grid {
-        grid-template-columns: repeat(2, 1fr);
-        /* 2 colunas em tablets */
+    @media (max-width: 480px) {
+      .container {
+        padding: 0 1rem;
       }
 
-      .logo {
-        height: 70px;
+      .products-hero h1 {
+        font-size: 1.8rem;
       }
 
-      .nav-item {
-        padding: 0 10px;
+      .category-btn {
+        padding: 0.5rem 1rem;
+        font-size: 0.85rem;
+      }
+
+      .product-info {
+        padding: 1rem;
+      }
+
+      .product-name {
+        font-size: 1.2rem;
+      }
+
+      .whatsapp-btn {
+        padding: 0.7rem 1rem;
+        font-size: 0.85rem;
+      }
+
+      .cta-section {
+        padding: 3rem 1rem;
       }
     }
-
-
-
-
   </style>
 </head>
 
 <body>
   <!-- Barra de navegação -->
   <header class="header">
-    <div class="navbar-container">
-      <a href="index.html" class="logo-link">
-        <img src="imgs/logo.png" alt="Andreani Massas Artesanais" class="logo">
-      </a>
+    <nav class="navbar">
+      <div class="navbar-container container">
+        <a href="index.html" class="logo-link">
+          <img src="imgs/logo.png" alt="Andreani Massas Artesanais" class="logo">
+        </a>
 
-      <div class="menu-toggle" id="menu-toggle" aria-label="Menu mobile">
-        <span class="bar"></span>
-        <span class="bar"></span>
-        <span class="bar"></span>
+        <div class="menu-toggle" id="menu-toggle" aria-label="Menu mobile">
+          <span class="bar"></span>
+          <span class="bar"></span>
+          <span class="bar"></span>
+        </div>
+
+        <ul class="nav-menu" id="nav-menu">
+          <li class="nav-item"><a href="index.html" class="nav-link">Início</a></li>
+          <li class="nav-item"><a href="produtos.html" class="nav-link active">Produtos</a></li>
+          <li class="nav-item"><a href="contato.html" class="nav-link">Contato</a></li>
+          <li class="nav-item highlight"><a href="https://wa.me/+5531984711401" class="nav-link whatsapp-link"
+              target="_blank">
+              <i class="fab fa-whatsapp"></i> Pedir agora
+            </a></li>
+        </ul>
       </div>
-
-      <ul class="nav-menu" id="nav-menu">
-        <li class="nav-item"><a href="index.html" class="nav-link">Início</a></li>
-        <li class="nav-item"><a href="produtos.html" class="nav-link active">Produtos</a></li>
-        <li class="nav-item"><a href="contato.html" class="nav-link">Contato</a></li>
-        <li class="nav-item highlight"><a href="https://wa.me/+5531984711401" class="nav-link whatsapp-link"
-            target="_blank">
-            <i class="fab fa-whatsapp"></i> Pedir agora
-          </a></li>
-      </ul>
-    </div>
+    </nav>
   </header>
 
   <main>
     <!-- Hero Section -->
     <section class="products-hero">
-      <h1>Nossas Massas Artesanais</h1>
-      <p>Conheça nossa linha completa de massas feitas com ingredientes selecionados e receitas tradicionais italianas
-      </p>
+      <div class="container">
+        <h1>Nossas Massas Artesanais</h1>
+        <p>Conheça nossa linha completa de massas feitas com ingredientes selecionados e receitas tradicionais italianas
+        </p>
+      </div>
     </section>
 
     <!-- Categorias -->
     <div class="product-categories">
       <button class="category-btn active" data-category="all">Todas</button>
-      <button class="category-btn" data-category="lasanha">Massas Prontas</button>
-      <button class="category-btn" data-category="fresca">Massas semi-prontas e Molhos</button>
-      <button class="category-btn" data-category="recheada">Salgados e Tortas</button>
-      <button class="category-btn" data-category="especial">Outros produtos</button>
+      <button class="category-btn" data-category="semi-prontas">Massas Semi-Prontas</button>
+      <button class="category-btn" data-category="prontas-secas">Massas Prontas e Secas</button>
+      <button class="category-btn" data-category="salgados-tortas">Salgados e Tortas</button>
+      <button class="category-btn" data-category="outros">Outros Produtos</button>
     </div>
 
     <!-- Grid de Produtos -->
-    <div class="products-grid">
-      <!-- Produto 1 -->
-      <div class="product-card">
-        <img src="imgs/Canelloni - Andreani.jpeg" alt="Canelloni" class="product-image">
-        <div class="product-info">
-          <h3 class="product-name">Canelloni</h3>
-          <p class="product-description">Massa fresca recheada com ricota e espinafre, coberta com molho de tomate
-            caseiro.</p>
-
-          <div class="product-cta">
-            <a href="https://wa.me/+5531984711401?text=Gostaria%20de%20pedir%20Canelloni" class="whatsapp-btn"
-              target="_blank">
-              <i class="fab fa-whatsapp"></i> Pedir
-            </a>
-
+    <div class="products-container container">
+      <div class="products-grid">
+        <!-- Massas Semi-Prontas -->
+        <div class="product-card" data-category="semi-prontas">
+          <img src="imgs/Canelloni - Andreani.jpeg" alt="Canelloni" class="product-image">
+          <div class="product-info">
+            <h3 class="product-name">Canelloni</h3>
+            <p class="product-description">Massa fresca recheada com ricota e espinafre, coberta com molho de tomate
+              caseiro.</p>
+            <div class="product-variations">
+              <div class="variation-item">
+                <span>Caneloni à Bolonhesa</span>
+              </div>
+              <div class="variation-item">
+                <span>Caneloni de Frango</span>
+              </div>
+              <div class="variation-item">
+                <span>Caneloni de Presunto com Mussarela</span>
+              </div>
+              <div class="variation-item">
+                <span>Caneloni de Frango com Requeijão</span>
+              </div>
+              <div class="variation-item">
+                <span>Caneloni Quatro Queijos</span>
+              </div>
+            </div>
+            <div class="product-cta">
+              <a href="https://wa.me/+5531984711401?text=Gostaria%20de%20pedir%20Canelloni" class="whatsapp-btn"
+                target="_blank">
+                <i class="fab fa-whatsapp"></i> Pedir
+              </a>
+            </div>
           </div>
         </div>
-      </div>
 
-      <!-- Produto 2 -->
-      <div class="product-card">
-        <img src="imgs/Ls.jpeg" alt="Lasanha" class="product-image">
-        <div class="product-info">
-          <h3 class="product-name">Lasanha</h3>
-          <p class="product-description">Camadas de massa fresca com molho bolonhesa e queijos derretidos, assada no
-            forno.</p>
-
-          <div class="product-cta">
-            <a href="https://wa.me/+5531984711401?text=Gostaria%20de%20pedir%20Lasanha" class="whatsapp-btn"
-              target="_blank">
-              <i class="fab fa-whatsapp"></i> Pedir
-            </a>
-
+        <div class="product-card" data-category="semi-prontas">
+          <img src="imgs/Capelleti - Andreani.jpeg" alt="Capelletti" class="product-image">
+          <div class="product-info">
+            <h3 class="product-name">Capelletti</h3>
+            <p class="product-description">Pequenos pastéis de massa fresca recheados com carne ou queijo, típicos da
+              Emilia-Romagna.</p>
+            <div class="product-variations">
+              <div class="variation-item">
+                <span>Capeleti de Frango</span>
+              </div>
+              <div class="variation-item">
+                <span>Capeleti de Carne</span>
+              </div>
+              <div class="variation-item">
+                <span>Capeleti de Queijo</span>
+              </div>
+              <div class="variation-item">
+                <span>Capeleti Verde (Ricota com Espinafre)</span>
+              </div>
+            </div>
+            <div class="product-cta">
+              <a href="https://wa.me/+5531984711401?text=Gostaria%20de%20pedir%20Capelletti" class="whatsapp-btn"
+                target="_blank">
+                <i class="fab fa-whatsapp"></i> Pedir
+              </a>
+            </div>
           </div>
         </div>
-      </div>
 
-      <!-- Produto 3 -->
-      <div class="product-card">
-        <img src="imgs/LasagnaClassica.jpg" alt="Lasagna Clássica" class="product-image">
-        <div class="product-info">
-          <h3 class="product-name">Lasagna Clássica</h3>
-          <p class="product-description">Receita tradicional italiana com massa fresca, molho branco e queijos
-            especiais.</p>
-
-          <div class="product-cta">
-            <a href="https://wa.me/+5531984711401?text=Gostaria%20de%20pedir%20Lasagna%20Clássica" class="whatsapp-btn"
-              target="_blank">
-              <i class="fab fa-whatsapp"></i> Pedir
-            </a>
-
+        <div class="product-card" data-category="semi-prontas">
+          <img src="imgs/Raviole Verde - Andreani.jpeg" alt="Ravioli" class="product-image">
+          <div class="product-info">
+            <h3 class="product-name">Ravioli</h3>
+            <p class="product-description">Massa fina recheada com queijos especiais e ervas finas, servida com molho à
+              escolha.</p>
+            <div class="product-variations">
+              <div class="variation-item">
+                <span>Ravioli de Carne</span>
+              </div>
+              <div class="variation-item">
+                <span>Ravioli de Frango</span>
+              </div>
+              <div class="variation-item">
+                <span>Ravioli de Nozes c/ Passas</span>
+              </div>
+              <div class="variation-item">
+                <span>Ravioli Verde (Ricota com Espinafre)</span>
+              </div>
+            </div>
+            <div class="product-cta">
+              <a href="https://wa.me/+5531984711401?text=Gostaria%20de%20pedir%20Ravioli" class="whatsapp-btn"
+                target="_blank">
+                <i class="fab fa-whatsapp"></i> Pedir
+              </a>
+            </div>
           </div>
         </div>
-      </div>
 
-      <!-- Produto 4 -->
-      <div class="product-card">
-        <img src="imgs/Nhoque - Andreani.jpeg" alt="Nhoque" class="product-image">
-        <div class="product-info">
-          <h3 class="product-name">Nhoque</h3>
-          <p class="product-description">Nhoque de batata caseiro, macio por dentro e levemente dourado por fora.</p>
-
-          <div class="product-cta">
-            <a href="https://wa.me/+5531984711401?text=Gostaria%20de%20pedir%20Nhoque" class="whatsapp-btn"
-              target="_blank">
-              <i class="fab fa-whatsapp"></i> Pedir
-            </a>
-
+        <div class="product-card" data-category="semi-prontas">
+          <img src="imgs/Rondelli - Andreani.jpeg" alt="Rondelli" class="product-image">
+          <div class="product-info">
+            <h3 class="product-name">Rondelli</h3>
+            <p class="product-description">Massa fresca recheada em formato redondo, com recheios especiais.</p>
+            <div class="product-variations">
+              <div class="variation-item">
+                <span>Rondell Quatro Queijos</span>
+              </div>
+              <div class="variation-item">
+                <span>Rondell de Presunto com Mussarela</span>
+              </div>
+              <div class="variation-item">
+                <span>Rondell de Presunto, Ricota e Espinafre</span>
+              </div>
+              <div class="variation-item">
+                <span>Rondell de Frango</span>
+              </div>
+              <div class="variation-item">
+                <span>Rondell de Nozes com Passas</span>
+              </div>
+              <div class="variation-item">
+                <span>Rondell Verde de Espinafre com Ricota</span>
+              </div>
+            </div>
+            <div class="product-cta">
+              <a href="https://wa.me/+5531984711401?text=Gostaria%20de%20pedir%20Rondelli" class="whatsapp-btn"
+                target="_blank">
+                <i class="fab fa-whatsapp"></i> Pedir
+              </a>
+            </div>
           </div>
         </div>
-      </div>
 
-      <!-- Produto 5 -->
-      <div class="product-card">
-        <img src="imgs/Raviole Verde - Andreani.jpeg" alt="Ravioli" class="product-image">
-        <div class="product-info">
-          <h3 class="product-name">Ravioli</h3>
-          <p class="product-description">Massa fina recheada com queijos especiais e ervas finas, servida com molho à
-            escolha.</p>
-
-          <div class="product-cta">
-            <a href="https://wa.me/+5531984711401?text=Gostaria%20de%20pedir%20Ravioli" class="whatsapp-btn"
-              target="_blank">
-              <i class="fab fa-whatsapp"></i> Pedir
-            </a>
-
+        <div class="product-card" data-category="semi-prontas">
+          <img src="imgs/Nhoque - Andreani.jpeg" alt="Nhoque" class="product-image">
+          <div class="product-info">
+            <h3 class="product-name">Nhoque</h3>
+            <p class="product-description">Nhoque de batata caseiro, macio por dentro e levemente dourado por fora.</p>
+            <div class="product-cta">
+              <a href="https://wa.me/+5531984711401?text=Gostaria%20de%20pedir%20Nhoque" class="whatsapp-btn"
+                target="_blank">
+                <i class="fab fa-whatsapp"></i> Pedir
+              </a>
+            </div>
           </div>
         </div>
-      </div>
 
-      <!-- Produto 6 -->
-      <div class="product-card">
-        <img src="imgs/Talharim - Andreani.jpeg" alt="Talharim" class="product-image">
-        <div class="product-info">
-          <h3 class="product-name">Talharim</h3>
-          <p class="product-description">Massa fresca cortada em tiras largas, perfeita para molhos encorpados.</p>
-
-          <div class="product-cta">
-            <a href="https://wa.me/+5531984711401?text=Gostaria%20de%20pedir%20Talharim" class="whatsapp-btn"
-              target="_blank">
-              <i class="fab fa-whatsapp"></i> Pedir
-            </a>
-
+        <!-- Massas Prontas e Secas -->
+        <div class="product-card" data-category="prontas-secas">
+          <img src="imgs/Ls.jpeg" alt="Lasanha" class="product-image">
+          <div class="product-info">
+            <h3 class="product-name">Lasanha</h3>
+            <p class="product-description">Camadas de massa fresca com molho bolonhesa e queijos derretidos, assada no
+              forno.</p>
+            <div class="product-variations">
+              <div class="variation-item">
+                <span>Lasanha à Bolonhesa</span>
+                <span>350g, 500g, 1Kg</span>
+              </div>
+              <div class="variation-item">
+                <span>Lasanha de Frango</span>
+                <span>350g, 500g, 1Kg</span>
+              </div>
+              <div class="variation-item">
+                <span>Lasanha Quatro Queijos</span>
+                <span>350g, 500g, 1Kg</span>
+              </div>
+              <div class="variation-item">
+                <span>Lasanha de Camarão</span>
+                <span>500g, 1Kg</span>
+              </div>
+            </div>
+            <div class="product-cta">
+              <a href="https://wa.me/+5531984711401?text=Gostaria%20de%20pedir%20Lasanha" class="whatsapp-btn"
+                target="_blank">
+                <i class="fab fa-whatsapp"></i> Pedir
+              </a>
+            </div>
           </div>
         </div>
-      </div>
-      <!-- Produto 7 -->
-      <div class="product-card">
-        <img src="imgs/Canelloni Verde - Andreani.jpeg" alt="Canelloni Verde" class="product-image">
-        <div class="product-info">
-          <h3 class="product-name">Canelloni Verde</h3>
-          <p class="product-description">Massa fresca verde recheada com uma seleção especial de queijos e espinafre.
-          </p>
 
-          <div class="product-cta">
-            <a href="https://wa.me/+5531984711401?text=Gostaria%20de%20pedir%20Canelloni%20Verde" class="whatsapp-btn"
-              target="_blank">
-              <i class="fab fa-whatsapp"></i> Pedir
-            </a>
+        <div class="product-card" data-category="prontas-secas">
+          <img src="imgs/Spaghetti - Andreani.jpeg" alt="Espaguete" class="product-image">
+          <div class="product-info">
+            <h3 class="product-name">Espaguete</h3>
+            <p class="product-description">Massa longa e fina, tradicional da culinária italiana, perfeita com diversos
+              molhos.</p>
+            <div class="product-variations">
+              <div class="variation-item">
+                <span>Espaguete</span>
+                <span>500g</span>
+              </div>
+              <div class="variation-item">
+                <span>Espaguete com Espinafre</span>
+                <span>500g</span>
+              </div>
+            </div>
+            <div class="product-cta">
+              <a href="https://wa.me/+5531984711401?text=Gostaria%20de%20pedir%20Espaguete" class="whatsapp-btn"
+                target="_blank">
+                <i class="fab fa-whatsapp"></i> Pedir
+              </a>
+            </div>
           </div>
         </div>
-      </div>
 
-      <!-- Produto 8 -->
-      <div class="product-card">
-        <img src="imgs/Capelleti - Andreani.jpeg" alt="Capelletti" class="product-image">
-        <div class="product-info">
-          <h3 class="product-name">Capelletti</h3>
-          <p class="product-description">Pequenos pastéis de massa fresca recheados com carne ou queijo, típicos da
-            Emilia-Romagna.</p>
-
-          <div class="product-cta">
-            <a href="https://wa.me/+5531984711401?text=Gostaria%20de%20pedir%20Capelletti" class="whatsapp-btn"
-              target="_blank">
-              <i class="fab fa-whatsapp"></i> Pedir
-            </a>
+        <div class="product-card" data-category="prontas-secas">
+          <img src="imgs/Talharim - Andreani.jpeg" alt="Talharim" class="product-image">
+          <div class="product-info">
+            <h3 class="product-name">Talharim</h3>
+            <p class="product-description">Massa fresca cortada em tiras largas, perfeita para molhos encorpados.</p>
+            <div class="product-variations">
+              <div class="variation-item">
+                <span>Talharim</span>
+                <span>500g</span>
+              </div>
+              <div class="variation-item">
+                <span>Talharim com Espinafre</span>
+                <span>500g</span>
+              </div>
+            </div>
+            <div class="product-cta">
+              <a href="https://wa.me/+5531984711401?text=Gostaria%20de%20pedir%20Talharim" class="whatsapp-btn"
+                target="_blank">
+                <i class="fab fa-whatsapp"></i> Pedir
+              </a>
+            </div>
           </div>
         </div>
-      </div>
 
-      <!-- Produto 9 -->
-      <div class="product-card">
-        <img src="imgs/Crepe - Andreani.jpeg" alt="Crepe" class="product-image">
-        <div class="product-info">
-          <h3 class="product-name">Crepe</h3>
-          <p class="product-description">Massa fina e versátil, perfeita para recheios doces ou salgados.</p>
-
-          <div class="product-cta">
-            <a href="https://wa.me/+5531984711401?text=Gostaria%20de%20pedir%20Crepe" class="whatsapp-btn"
-              target="_blank">
-              <i class="fab fa-whatsapp"></i> Pedir
-            </a>
+        <!-- Salgados e Tortas -->
+        <div class="product-card" data-category="salgados-tortas">
+          <img src="imgs/Salgados - Andreani.jpeg" alt="Salgados" class="product-image">
+          <div class="product-info">
+            <h3 class="product-name">Salgados</h3>
+            <p class="product-description">Seleção de salgados artesanais perfeitos para eventos e ocasiões especiais.
+            </p>
+            <div class="product-variations">
+              <div class="variation-item">
+                <span>Empada de Frango</span>
+              </div>
+              <div class="variation-item">
+                <span>Empada de Queijo</span>
+              </div>
+              <div class="variation-item">
+                <span>Pastel Asado</span>
+              </div>
+              <div class="variation-item">
+                <span>Coxinha de Frango</span>
+              </div>
+              <div class="variation-item">
+                <span>Coxinha de Frango com requeijão</span>
+              </div>
+              <div class="variation-item">
+                <span>Esfiha de Carne</span>
+              </div>
+              <div class="variation-item">
+                <span>Esfiha de Frango</span>
+              </div>
+              <div class="variation-item">
+                <span>Risoly de Alho poró</span>
+              </div>
+              <div class="variation-item">
+                <span>Risoly de milho</span>
+              </div>
+              <div class="variation-item">
+                <span>Kibe</span>
+              </div>
+              <div class="variation-item">
+                <span>Kibe com queijo</span>
+              </div>
+              <div class="variation-item">
+                <span>Pastel Português</span>
+              </div>
+              <div class="variation-item">
+                <span>Bolinho de Bacalhau (15unid)</span>
+              </div>
+              <div class="variation-item">
+                <span>Bolinho de Calabresa</span>
+              </div>
+              <div class="variation-item">
+                <span>Bolinha de 3 Queijos</span>
+              </div>
+            </div>
+            <div class="product-cta">
+              <a href="https://wa.me/+5531984711401?text=Gostaria%20de%20pedir%20Salgados" class="whatsapp-btn"
+                target="_blank">
+                <i class="fab fa-whatsapp"></i> Pedir
+              </a>
+            </div>
           </div>
         </div>
-      </div>
 
-      <!-- Produto 10 -->
-      <div class="product-card">
-        <img src="imgs/Mini Pizza - Andreani.jpeg" alt="Mini Pizza" class="product-image">
-        <div class="product-info">
-          <h3 class="product-name">Mini Pizza</h3>
-          <p class="product-description">Pequenas pizzas artesanais perfeitas para entradas ou lanches.</p>
-
-          <div class="product-cta">
-            <a href="https://wa.me/+5531984711401?text=Gostaria%20de%20pedir%20Mini%20Pizza" class="whatsapp-btn"
-              target="_blank">
-              <i class="fab fa-whatsapp"></i> Pedir
-            </a>
+        <div class="product-card" data-category="salgados-tortas">
+          <img src="imgs/Tortinhas - Andreani.jpeg" alt="Tortas" class="product-image">
+          <div class="product-info">
+            <h3 class="product-name">Tortas</h3>
+            <p class="product-description">Deliciosas tortas salgadas com recheios especiais, perfeitas para lanches.
+            </p>
+            <div class="product-variations">
+              <div class="variation-item">
+                <span>Torta de Frango</span>
+                <span>450g, 900g</span>
+              </div>
+              <div class="variation-item">
+                <span>Torta de Frango com requeijão</span>
+                <span>450g, 900g</span>
+              </div>
+              <div class="variation-item">
+                <span>Torta de Palmito com requeijão</span>
+                <span>450g, 900g</span>
+              </div>
+              <div class="variation-item">
+                <span>Torta de Bacalhau</span>
+                <span>450g, 900g</span>
+              </div>
+              <div class="variation-item">
+                <span>Torta de Camarão</span>
+                <span>450g, 900g</span>
+              </div>
+            </div>
+            <div class="product-cta">
+              <a href="https://wa.me/+5531984711401?text=Gostaria%20de%20pedir%20Tortas" class="whatsapp-btn"
+                target="_blank">
+                <i class="fab fa-whatsapp"></i> Pedir
+              </a>
+            </div>
           </div>
         </div>
-      </div>
 
-      <!-- Produto 11 -->
-      <div class="product-card">
-        <img src="imgs/Molho ao Sugo - Andreani.jpeg" alt="Molho ao Sugo" class="product-image">
-        <div class="product-info">
-          <h3 class="product-name">Molho ao Sugo</h3>
-          <p class="product-description">Molho de tomate tradicional italiano, preparado com tomates frescos e ervas
-            aromáticas.</p>
-
-          <div class="product-cta">
-            <a href="https://wa.me/+5531984711401?text=Gostaria%20de%20pedir%20Molho%20ao%20Sugo" class="whatsapp-btn"
-              target="_blank">
-              <i class="fab fa-whatsapp"></i> Pedir
-            </a>
+        <!-- Outros Produtos -->
+        <div class="product-card" data-category="outros">
+          <img src="imgs/Molho ao Sugo - Andreani.jpeg" alt="Molho ao Sugo" class="product-image">
+          <div class="product-info">
+            <h3 class="product-name">Molho ao Sugo</h3>
+            <p class="product-description">Molho de tomate tradicional italiano, preparado com tomates frescos e ervas
+              aromáticas.</p>
+            <div class="product-cta">
+              <a href="https://wa.me/+5531984711401?text=Gostaria%20de%20pedir%20Molho%20ao%20Sugo" class="whatsapp-btn"
+                target="_blank">
+                <i class="fab fa-whatsapp"></i> Pedir
+              </a>
+            </div>
           </div>
         </div>
-      </div>
 
-      <!-- Produto 12 -->
-      <div class="product-card">
-        <img src="imgs/Molho Bolonhesa - Andreani.jpeg" alt="Molho Bolonhesa" class="product-image">
-        <div class="product-info">
-          <h3 class="product-name">Molho Bolonhesa</h3>
-          <p class="product-description">Clássico molho à bolonhesa preparado com carne moída de primeira qualidade e
-            tomates.</p>
-
-          <div class="product-cta">
-            <a href="https://wa.me/+5531984711401?text=Gostaria%20de%20pedir%20Molho%20Bolonhesa" class="whatsapp-btn"
-              target="_blank">
-              <i class="fab fa-whatsapp"></i> Pedir
-            </a>
+        <div class="product-card" data-category="outros">
+          <img src="imgs/Molho Bolonhesa - Andreani.jpeg" alt="Molho Bolonhesa" class="product-image">
+          <div class="product-info">
+            <h3 class="product-name">Molho Bolonhesa</h3>
+            <p class="product-description">Clássico molho à bolonhesa preparado com carne moída de primeira qualidade e
+              tomates.</p>
+            <div class="product-cta">
+              <a href="https://wa.me/+5531984711401?text=Gostaria%20de%20pedir%20Molho%20Bolonhesa" class="whatsapp-btn"
+                target="_blank">
+                <i class="fab fa-whatsapp"></i> Pedir
+              </a>
+            </div>
           </div>
         </div>
-      </div>
 
-      <!-- Produto 13 -->
-      <div class="product-card">
-        <img src="imgs/Molho Branco - Andreani.jpeg" alt="Molho Branco" class="product-image">
-        <div class="product-info">
-          <h3 class="product-name">Molho Branco</h3>
-          <p class="product-description">Cremoso molho branco preparado com manteiga, farinha, leite e noz-moscada.
-          </p>
-
-          <div class="product-cta">
-            <a href="https://wa.me/+5531984711401?text=Gostaria%20de%20pedir%20Molho%20Branco" class="whatsapp-btn"
-              target="_blank">
-              <i class="fab fa-whatsapp"></i> Pedir
-            </a>
+        <div class="product-card" data-category="outros">
+          <img src="imgs/Molho Branco - Andreani.jpeg" alt="Molho Branco" class="product-image">
+          <div class="product-info">
+            <h3 class="product-name">Molho Branco</h3>
+            <p class="product-description">Cremoso molho branco preparado com manteiga, farinha, leite e noz-moscada.
+            </p>
+            <div class="product-cta">
+              <a href="https://wa.me/+5531984711401?text=Gostaria%20de%20pedir%20Molho%20Branco" class="whatsapp-btn"
+                target="_blank">
+                <i class="fab fa-whatsapp"></i> Pedir
+              </a>
+            </div>
           </div>
         </div>
-      </div>
 
-      <!-- Produto 14 -->
-      <div class="product-card">
-        <img src="imgs/RaviolideQueijo.jpg" alt="Ravioli de Queijo" class="product-image">
-        <div class="product-info">
-          <h3 class="product-name">Ravioli de Queijo</h3>
-          <p class="product-description">Massa fresca recheada com uma seleção especial de queijos italianos.</p>
-
-          <div class="product-cta">
-            <a href="https://wa.me/+5531984711401?text=Gostaria%20de%20pedir%20Ravioli%20de%20Queijo"
-              class="whatsapp-btn" target="_blank">
-              <i class="fab fa-whatsapp"></i> Pedir
-            </a>
+        <div class="product-card" data-category="outros">
+          <img src="imgs/TagliatelleArtesanal.jpg" alt="Tagliatelle Artesanal" class="product-image">
+          <div class="product-info">
+            <h3 class="product-name">Tagliatelle Artesanal</h3>
+            <p class="product-description">Massa fresca cortada em tiras largas e achatadas, típica da região da
+              Emilia-Romagna.</p>
+            <div class="product-cta">
+              <a href="https://wa.me/+5531984711401?text=Gostaria%20de%20pedir%20Tagliatelle%20Artesanal"
+                class="whatsapp-btn" target="_blank">
+                <i class="fab fa-whatsapp"></i> Pedir
+              </a>
+            </div>
           </div>
         </div>
-      </div>
 
-      <!-- Produto 15 -->
-      <div class="product-card">
-        <img src="imgs/Rondelli - Andreani.jpeg" alt="Rondelli" class="product-image">
-        <div class="product-info">
-          <h3 class="product-name">Rondelli</h3>
-          <p class="product-description">Massa fresca recheada em formato redondo, com recheios especiais.</p>
-
-          <div class="product-cta">
-            <a href="https://wa.me/+5531984711401?text=Gostaria%20de%20pedir%20Rondelli" class="whatsapp-btn"
-              target="_blank">
-              <i class="fab fa-whatsapp"></i> Pedir
-            </a>
+        <div class="product-card" data-category="outros">
+          <img src="imgs/Mini Pizza - Andreani.jpeg" alt="Mini Pizza" class="product-image">
+          <div class="product-info">
+            <h3 class="product-name">Mini Pizza</h3>
+            <p class="product-description">Pequenas pizzas artesanais perfeitas para entradas ou lanches.</p>
+            <div class="product-variations">
+              <div class="variation-item">
+                <span>Mini Pizza de Mussarela</span>
+              </div>
+              <div class="variation-item">
+                <span>Mini Pizza de Calabresa</span>
+              </div>
+              <div class="variation-item">
+                <span>Mini Pizza de Frango</span>
+              </div>
+            </div>
+            <div class="product-cta">
+              <a href="https://wa.me/+5531984711401?text=Gostaria%20de%20pedir%20Mini%20Pizza" class="whatsapp-btn"
+                target="_blank">
+                <i class="fab fa-whatsapp"></i> Pedir
+              </a>
+            </div>
           </div>
         </div>
-      </div>
 
-      <!-- Produto 16 -->
-      <div class="product-card">
-        <img src="imgs/Rondelli verde - Andreani.jpeg" alt="Rondelli Verde" class="product-image">
-        <div class="product-info">
-          <h3 class="product-name">Rondelli Verde</h3>
-          <p class="product-description">Massa verde fresca recheada em formato redondo, com recheios especiais.</p>
-
-          <div class="product-cta">
-            <a href="https://wa.me/+5531984711401?text=Gostaria%20de%20pedir%20Rondelli%20Verde" class="whatsapp-btn"
-              target="_blank">
-              <i class="fab fa-whatsapp"></i> Pedir
-            </a>
-          </div>
-        </div>
-      </div>
-
-      <!-- Produto 17 -->
-      <div class="product-card">
-        <img src="imgs/Salgados - Andreani.jpeg" alt="Salgados" class="product-image">
-        <div class="product-info">
-          <h3 class="product-name">Salgados</h3>
-          <p class="product-description">Seleção de salgados artesanais perfeitos para eventos e ocasiões especiais.
-          </p>
-
-          <div class="product-cta">
-            <a href="https://wa.me/+5531984711401?text=Gostaria%20de%20pedir%20Salgados" class="whatsapp-btn"
-              target="_blank">
-              <i class="fab fa-whatsapp"></i> Pedir
-            </a>
-          </div>
-        </div>
-      </div>
-
-      <!-- Produto 18 -->
-      <div class="product-card">
-        <img src="imgs/Spaghetti - Andreani.jpeg" alt="Spaghetti" class="product-image">
-        <div class="product-info">
-          <h3 class="product-name">Spaghetti</h3>
-          <p class="product-description">Massa longa e fina, tradicional da culinária italiana, perfeita com diversos
-            molhos.</p>
-
-          <div class="product-cta">
-            <a href="https://wa.me/+5531984711401?text=Gostaria%20de%20pedir%20Spaghetti" class="whatsapp-btn"
-              target="_blank">
-              <i class="fab fa-whatsapp"></i> Pedir
-            </a>
-          </div>
-        </div>
-      </div>
-
-      <!-- Produto 19 -->
-      <div class="product-card">
-        <img src="imgs/TagliatelleArtesanal.jpg" alt="Tagliatelle Artesanal" class="product-image">
-        <div class="product-info">
-          <h3 class="product-name">Tagliatelle Artesanal</h3>
-          <p class="product-description">Massa fresca cortada em tiras largas e achatadas, típica da região da
-            Emilia-Romagna.</p>
-
-          <div class="product-cta">
-            <a href="https://wa.me/+5531984711401?text=Gostaria%20de%20pedir%20Tagliatelle%20Artesanal"
-              class="whatsapp-btn" target="_blank">
-              <i class="fab fa-whatsapp"></i> Pedir
-            </a>
-          </div>
-        </div>
-      </div>
-
-      <!-- Produto 20 -->
-      <div class="product-card">
-        <img src="imgs/Tortinhas - Andreani.jpeg" alt="Toritnhas" class="product-image">
-        <div class="product-info">
-          <h3 class="product-name">Toritnhas</h3>
-          <p class="product-description">Deliciosas tortinhas salgadas com recheios especiais, perfeitas para lanches.
-          </p>
-
-          <div class="product-cta">
-            <a href="https://wa.me/+5531984711401?text=Gostaria%20de%20pedir%20Toritnhas" class="whatsapp-btn"
-              target="_blank">
-              <i class="fab fa-whatsapp"></i> Pedir
-            </a>
+        <div class="product-card" data-category="outros">
+          <img src="imgs/Crepe - Andreani.jpeg" alt="Crepe" class="product-image">
+          <div class="product-info">
+            <h3 class="product-name">Crepe</h3>
+            <p class="product-description">Massa fina e versátil, perfeita para recheios doces ou salgados.</p>
+            <div class="product-cta">
+              <a href="https://wa.me/+5531984711401?text=Gostaria%20de%20pedir%20Crepe" class="whatsapp-btn"
+                target="_blank">
+                <i class="fab fa-whatsapp"></i> Pedir
+              </a>
+            </div>
           </div>
         </div>
       </div>
     </div>
-
-
-    </div>
-
-
 
     <!-- Seção de Destaque -->
     <section class="cta-section">
@@ -738,8 +1123,7 @@
           <h3>Links Rápidos</h3>
           <ul>
             <li><a href="index.html">Início</a></li>
-            <li><a href="historia.html">Nossa História</a></li>
-            <li><a href="produtos.html">Nossas Massas</a></li>
+            <li><a href="produtos.html">Produtos</a></li>
             <li><a href="contato.html">Contato</a></li>
           </ul>
         </div>
@@ -790,41 +1174,18 @@
       menuToggle.classList.toggle('active');
     });
 
+    // Fecha o menu ao clicar em um link
+    document.querySelectorAll('.nav-link').forEach(link => {
+      link.addEventListener('click', () => {
+        navMenu.classList.remove('active');
+        menuToggle.classList.remove('active');
+      });
+    });
+
     // Filtro de categorias funcional
     document.addEventListener('DOMContentLoaded', function () {
       const categoryBtns = document.querySelectorAll('.category-btn');
       const productCards = document.querySelectorAll('.product-card');
-
-      // Mapeamento de produtos para categorias
-      const productCategories = {
-        // Lasanhas
-        'Lasanha': 'lasanha',
-        'Lasagna Clássica': 'lasanha',
-
-        // Massas Frescas
-        'Talharim': 'fresca',
-        'Tagliatelle Artesanal': 'fresca',
-        'Spaghetti': 'fresca',
-        'Nhoque': 'fresca',
-
-        // Massas Recheadas
-        'Canelloni': 'recheada',
-        'Canelloni Verde': 'recheada',
-        'Ravioli': 'recheada',
-        'Ravioli de Queijo': 'recheada',
-        'Capelletti': 'recheada',
-        'Rondelli': 'recheada',
-        'Rondelli Verde': 'recheada',
-
-        // Especiais
-        'Crepe': 'especial',
-        'Mini Pizza': 'especial',
-        'Salgados': 'especial',
-        'Toritnhas': 'especial',
-        'Molho ao Sugo': 'especial',
-        'Molho Bolonhesa': 'especial',
-        'Molho Branco': 'especial'
-      };
 
       categoryBtns.forEach(btn => {
         btn.addEventListener('click', () => {
@@ -835,16 +1196,28 @@
           const category = btn.dataset.category;
 
           // Filtra os produtos
+          let hasVisibleProducts = false;
           productCards.forEach(card => {
-            const productName = card.querySelector('.product-name').textContent;
-            const productCategory = productCategories[productName];
-
-            if (category === 'all' || productCategory === category) {
+            if (category === 'all' || card.dataset.category === category) {
               card.style.display = 'flex';
+              hasVisibleProducts = true;
             } else {
               card.style.display = 'none';
             }
           });
+
+          // Mostra mensagem se não houver produtos na categoria
+          const noProductsMsg = document.querySelector('.no-products');
+          if (!hasVisibleProducts) {
+            if (!noProductsMsg) {
+              const message = document.createElement('div');
+              message.className = 'no-products';
+              message.innerHTML = '<h3>Nenhum produto encontrado nesta categoria</h3><p>Entre em contato conosco para mais informações sobre nossos produtos.</p>';
+              document.querySelector('.products-grid').appendChild(message);
+            }
+          } else if (noProductsMsg) {
+            noProductsMsg.remove();
+          }
         });
       });
     });

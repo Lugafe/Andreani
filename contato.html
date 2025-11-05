@@ -10,101 +10,106 @@
   <link rel="stylesheet" href="style.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Playwrite+IN:wght@100..400&family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Playwrite+IN:wght@100..400&family=Poppins:wght@300;400;600;700&display=swap"
+    rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
     /* Footer */
-.footer {
-  background-color: var(--secondary-color);
-  color: white;
-  padding: 250px 0 0;
-}
+    .footer {
+      background-color: var(--secondary-color);
+      color: white;
+      padding: 250px 0 0;
+    }
 
-.footer-content {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 40px;
-  margin-bottom: 40px;
-}
+    
 
-.footer-logo img {
-  margin-bottom: 20px;
-}
+    .footer-content {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 40px;
+      margin-bottom: 40px;
+    }
 
-.footer-logo p {
-  opacity: 0.8;
-}
+    .footer-logo img {
+      margin-bottom: 20px;
+    }
 
-.footer-links h3, .footer-contact h3 {
-  font-size: 1.3rem;
-  margin-bottom: 20px;
-  font-family: var(--font-primary);
-}
+    .footer-logo p {
+      opacity: 0.8;
+    }
 
-.footer-links ul li {
-  margin-bottom: 10px;
-}
+    .footer-links h3,
+    .footer-contact h3 {
+      font-size: 1.3rem;
+      margin-bottom: 20px;
+      font-family: var(--font-primary);
+    }
 
-.footer-links a {
-  opacity: 0.8;
-  transition: var(--transition);
-}
+    .footer-links ul li {
+      margin-bottom: 10px;
+    }
 
-.footer-links a:hover {
-  opacity: 1;
-  color: var(--light-color);
-}
+    .footer-links a {
+      opacity: 0.8;
+      transition: var(--transition);
+    }
 
-.footer-contact p {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  margin-bottom: 15px;
-  opacity: 0.8;
-}
+    .footer-links a:hover {
+      opacity: 1;
+      color: var(--light-color);
+    }
 
-.footer-contact i {
-  width: 20px;
-  text-align: center;
-}
+    .footer-contact p {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 15px;
+      opacity: 0.8;
+    }
 
-.footer-bottom {
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
-  padding-top: 20px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 20px;
-}
+    .footer-contact i {
+      width: 20px;
+      text-align: center;
+    }
 
-.copyright {
-  opacity: 0.7;
-}
+    .footer-bottom {
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      padding-top: 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
 
-/* WhatsApp Float Button */
-.float-whatsapp {
-  position: fixed;
-  bottom: 30px;
-  right: 30px;
-  width: 60px;
-  height: 60px;
-  background-color: var(--accent-color);
-  color: white;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 1.8rem;
-  box-shadow: 0 5px 15px rgba(37, 211, 102, 0.3);
-  z-index: 999;
-  transition: var(--transition);
-}
+    .copyright {
+      opacity: 0.7;
+    }
 
-.float-whatsapp:hover {
-  background-color: #1DA851;
-  transform: translateY(-5px) scale(1.1);
-}
+    /* WhatsApp Float Button */
+    .float-whatsapp {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      width: 60px;
+      height: 60px;
+      background-color: var(--accent-color);
+      color: white;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.8rem;
+      box-shadow: 0 5px 15px rgba(37, 211, 102, 0.3);
+      z-index: 999;
+      transition: var(--transition);
+    }
+
+    .float-whatsapp:hover {
+      background-color: #1DA851;
+      transform: translateY(-5px) scale(1.1);
+    }
   </style>
 </head>
 
@@ -116,20 +121,21 @@
         <a href="index.html" class="logo-link">
           <img src="imgs/logo.png" alt="Andreani Massas Artesanais" class="logo" width="70">
         </a>
-        
+
         <div class="menu-toggle" id="menu-toggle" aria-label="Menu mobile">
           <span class="bar"></span>
           <span class="bar"></span>
           <span class="bar"></span>
         </div>
-        
+
         <ul class="nav-menu" id="nav-menu">
           <li class="nav-item"><a href="index.html" class="nav-link active">Início</a></li>
-          <li class="nav-item"><a href="produtos.html" class="nav-link">Nossas Massas</a></li>
+          <li class="nav-item"><a href="produtos.html" class="nav-link">Produtos</a></li>
           <li class="nav-item"><a href="contato.html" class="nav-link">Contato</a></li>
-          <li class="nav-item highlight"><a href="https://wa.me/+5531984711401" class="nav-link whatsapp-link" target="_blank">
-            <i class="fab fa-whatsapp"></i> Pedir agora
-          </a></li>
+          <li class="nav-item highlight"><a href="https://wa.me/+5531984711401" class="nav-link whatsapp-link"
+              target="_blank">
+              <i class="fab fa-whatsapp"></i> Pedir agora
+            </a></li>
         </ul>
       </div>
     </nav>
@@ -145,25 +151,25 @@
           <img src="imgs/logo.png" alt="Andreani Massas" width="150">
           <p>Tradição italiana em massas artesanais</p>
         </div>
-        
+
         <div class="footer-links">
           <h3>Links Rápidos</h3>
           <ul>
             <li><a href="index.html">Início</a></li>
-            
+
             <li><a href="produtos.html">Nossas Massas</a></li>
             <li><a href="contato.html">Contato</a></li>
           </ul>
         </div>
-        
+
         <div class="footer-contact">
           <h3>Contato</h3>
           <p><i class="fas fa-map-marker-alt"></i> Rua Prof. Raimundo Nonato, 63</p>
-          <p><i class="fas fa-phone-alt"></i>  (31) 3274-5019</p>
+          <p><i class="fas fa-phone-alt"></i> (31) 3274-5019</p>
           <p><i class="fas fa-envelope"></i> massasandreani@yahoo.com.br</p>
         </div>
       </div>
-      
+
       <div class="footer-bottom">
         <div class="copyright">
           &copy; <span id="year"></span> Massas Andreani. Todos os direitos reservados.
@@ -172,7 +178,8 @@
           <a href="https://wa.me/+5531984711401" class="social-icon" target="_blank" aria-label="WhatsApp">
             <i class="fab fa-whatsapp"></i>
           </a>
-          <a href="https://www.instagram.com/massasandreani/" class="social-icon" target="_blank" aria-label="Instagram">
+          <a href="https://www.instagram.com/massasandreani/" class="social-icon" target="_blank"
+            aria-label="Instagram">
             <i class="fab fa-instagram"></i>
           </a>
           <a href="https://www.facebook.com/massasandreani" class="social-icon" target="_blank" aria-label="Facebook">
@@ -186,4 +193,5 @@
 
 
 </body>
+
 </html>
