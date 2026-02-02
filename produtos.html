@@ -215,7 +215,7 @@
     .product-categories {
       display: flex;
       justify-content: center;
-      gap: 1rem;
+      gap: 0.8rem;
       margin-bottom: 3rem;
       flex-wrap: wrap;
       padding: 0 1.5rem;
@@ -231,6 +231,7 @@
       font-family: inherit;
       font-size: 1rem;
       font-weight: 500;
+      white-space: nowrap;
     }
 
     .category-btn.active,
@@ -239,7 +240,7 @@
       color: var(--white);
     }
 
-    /* Products Grid */
+    /* Products Grid - CORREÇÃO: Ajuste para evitar cards alongados */
     .products-container {
       padding: 0 1.5rem 4rem;
     }
@@ -248,6 +249,7 @@
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
       gap: 2rem;
+      align-items: start; /* Alinha os cards pelo topo */
     }
 
     .product-card {
@@ -258,7 +260,8 @@
       transition: var(--transition);
       display: flex;
       flex-direction: column;
-      height: 100%;
+      min-height: 420px; /* Altura mínima para uniformidade */
+      max-height: 550px; /* Altura máxima para evitar alongamento */
     }
 
     .product-card:hover {
@@ -268,7 +271,7 @@
 
     .product-image {
       width: 100%;
-      height: 220px;
+      height: 200px; /* Altura fixa para imagens */
       object-fit: cover;
     }
 
@@ -283,22 +286,16 @@
       font-family: 'Playwrite IN', serif;
       font-size: 1.5rem;
       color: var(--secondary-color);
-      margin-bottom: 1rem; /* Aumentado para criar espaço */
+      margin-bottom: 1rem;
+      min-height: 3.5rem; /* Altura mínima para manter alinhamento */
     }
-
-    /* CORREÇÃO APLICADA: Removida a descrição do produto */
-    /* .product-description {
-      color: #666;
-      margin-bottom: 1.5rem;
-      flex: 1;
-    } */
 
     .product-variations {
       margin-bottom: 1.5rem;
-      max-height: 150px;
+      max-height: 180px; /* Aumentado para mostrar mais variações */
       overflow-y: auto;
       padding-right: 0.5rem;
-      flex: 1; /* Ocupa o espaço disponível */
+      flex: 1;
     }
 
     .product-variations::-webkit-scrollbar {
@@ -332,7 +329,8 @@
       justify-content: space-between;
       align-items: center;
       gap: 0.5rem;
-      margin-top: auto; /* Garante que fique na parte inferior */
+      margin-top: auto;
+      padding-top: 1rem;
     }
 
     .whatsapp-btn {
@@ -489,10 +487,22 @@
     }
 
     /* Responsividade */
-    @media (max-width: 1024px) {
+    @media (max-width: 1200px) {
       .products-grid {
         grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
         gap: 1.5rem;
+      }
+    }
+
+    @media (max-width: 992px) {
+      .products-grid {
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+        gap: 1.5rem;
+      }
+      
+      .product-card {
+        min-height: 400px;
+        max-height: 520px;
       }
     }
 
@@ -533,7 +543,7 @@
 
       .products-hero {
         padding: 6rem 1rem 3rem;
-        padding-top: 100px; /* Ajuste para mobile */
+        padding-top: 100px;
       }
 
       .products-hero h1 {
@@ -559,13 +569,15 @@
       }
 
       .products-grid {
-        grid-template-columns: 1fr;
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
         gap: 1.5rem;
       }
 
       .product-card {
         margin: 0 auto;
         max-width: 400px;
+        min-height: 420px;
+        max-height: 550px;
       }
 
       .product-image {
@@ -578,10 +590,11 @@
 
       .product-name {
         font-size: 1.3rem;
+        min-height: 3.2rem;
       }
 
       .product-variations {
-        max-height: 120px;
+        max-height: 160px;
       }
 
       .footer-bottom {
@@ -612,12 +625,22 @@
         font-size: 0.85rem;
       }
 
+      .products-grid {
+        grid-template-columns: 1fr;
+      }
+
       .product-info {
         padding: 1rem;
       }
 
       .product-name {
         font-size: 1.2rem;
+        min-height: 3rem;
+      }
+
+      .product-card {
+        min-height: 400px;
+        max-height: 500px;
       }
 
       .whatsapp-btn {
@@ -627,6 +650,23 @@
 
       .cta-section {
         padding: 3rem 1rem;
+      }
+    }
+    
+    @media (max-width: 360px) {
+      .product-categories {
+        justify-content: flex-start;
+        overflow-x: auto;
+        padding-bottom: 0.5rem;
+      }
+      
+      .product-categories::-webkit-scrollbar {
+        height: 4px;
+      }
+      
+      .product-categories::-webkit-scrollbar-thumb {
+        background: var(--primary-color);
+        border-radius: 10px;
       }
     }
   </style>
@@ -670,13 +710,16 @@
       </div>
     </section>
 
-    <!-- Categorias -->
+    <!-- Categorias - CORREÇÃO: Separado Massas Prontas e Massas Secas -->
     <div class="product-categories">
       <button class="category-btn active" data-category="all">Todas</button>
       <button class="category-btn" data-category="semi-prontas">Massas Semi-Prontas</button>
-      <button class="category-btn" data-category="prontas-secas">Massas Prontas e Secas</button>
+      <button class="category-btn" data-category="massas-prontas">Massas Prontas</button>
+      <button class="category-btn" data-category="massas-secas">Massas Secas</button>
       <button class="category-btn" data-category="salgados-tortas">Salgados e Tortas</button>
-      <button class="category-btn" data-category="outros">Outros Produtos</button>
+      <button class="category-btn" data-category="crepes">Crepes</button>
+      <button class="category-btn" data-category="molhos">Molhos</button>
+      <button class="category-btn" data-category="outros">Outros</button>
     </div>
 
     <!-- Grid de Produtos -->
@@ -805,7 +848,9 @@
           <div class="product-info">
             <h3 class="product-name">Nhoque</h3>
             <div class="product-variations">
-              <!-- Espaço em branco mantido para produtos sem variações -->
+              <div class="variation-item">
+                <span>Nhoque </span>
+              </div>
             </div>
             <div class="product-cta">
               <a href="https://wa.me/+5531984711401?text=Gostaria%20de%20pedir%20Nhoque" class="whatsapp-btn"
@@ -816,27 +861,44 @@
           </div>
         </div>
 
-        <!-- Massas Prontas e Secas -->
-        <div class="product-card" data-category="prontas-secas">
+        <!-- Massas Prontas - CORREÇÃO: Lasanha movida para cá -->
+        <div class="product-card" data-category="massas-prontas">
           <img src="imgs/Ls.jpeg" alt="Lasanha" class="product-image">
           <div class="product-info">
             <h3 class="product-name">Lasanha</h3>
             <div class="product-variations">
               <div class="variation-item">
-                <span>Lasanha à Bolonhesa</span>
-                <span>350g, 500g, 1Kg</span>
+                <span>Lasanha à Bolonhesa </span>
               </div>
               <div class="variation-item">
-                <span>Lasanha de Frango</span>
-                <span>350g, 500g, 1Kg</span>
+                <span>Lasanha à Bolonhesa </span>
               </div>
               <div class="variation-item">
-                <span>Lasanha Quatro Queijos</span>
-                <span>350g, 500g, 1Kg</span>
+                <span>Lasanha à Bolonhesa </span>
               </div>
               <div class="variation-item">
-                <span>Lasanha de Camarão</span>
-                <span>500g, 1Kg</span>
+                <span>Lasanha de Frango </span>
+              </div>
+              <div class="variation-item">
+                <span>Lasanha de Frango </span>
+              </div>
+              <div class="variation-item">
+                <span>Lasanha de Frango </span>
+              </div>
+              <div class="variation-item">
+                <span>Lasanha Quatro Queijos </span>
+              </div>
+              <div class="variation-item">
+                <span>Lasanha Quatro Queijos </span>
+              </div>
+              <div class="variation-item">
+                <span>Lasanha Quatro Queijos </span>
+              </div>
+              <div class="variation-item">
+                <span>Lasanha de Camarão </span>
+              </div>
+              <div class="variation-item">
+                <span>Lasanha de Camarão </span>
               </div>
             </div>
             <div class="product-cta">
@@ -848,18 +910,17 @@
           </div>
         </div>
 
-        <div class="product-card" data-category="prontas-secas">
+        <!-- Massas Secas -->
+        <div class="product-card" data-category="massas-secas">
           <img src="imgs/Spaghetti - Andreani.jpeg" alt="Espaguete" class="product-image">
           <div class="product-info">
             <h3 class="product-name">Espaguete</h3>
             <div class="product-variations">
               <div class="variation-item">
-                <span>Espaguete</span>
-                <span>500g</span>
+                <span>Espaguete </span>
               </div>
               <div class="variation-item">
-                <span>Espaguete com Espinafre</span>
-                <span>500g</span>
+                <span>Espaguete com Espinafre </span>
               </div>
             </div>
             <div class="product-cta">
@@ -871,18 +932,16 @@
           </div>
         </div>
 
-        <div class="product-card" data-category="prontas-secas">
+        <div class="product-card" data-category="massas-secas">
           <img src="imgs/Talharim - Andreani.jpeg" alt="Talharim" class="product-image">
           <div class="product-info">
             <h3 class="product-name">Talharim</h3>
             <div class="product-variations">
               <div class="variation-item">
-                <span>Talharim</span>
-                <span>500g</span>
+                <span>Talharim </span>
               </div>
               <div class="variation-item">
-                <span>Talharim com Espinafre</span>
-                <span>500g</span>
+                <span>Talharim com Espinafre </span>
               </div>
             </div>
             <div class="product-cta">
@@ -937,7 +996,7 @@
                 <span>Pastel Português</span>
               </div>
               <div class="variation-item">
-                <span>Bolinho de Bacalhau (15unid)</span>
+                <span>Bolinho de Bacalhau </span>
               </div>
               <div class="variation-item">
                 <span>Bolinho de Calabresa</span>
@@ -961,24 +1020,34 @@
             <h3 class="product-name">Tortas</h3>
             <div class="product-variations">
               <div class="variation-item">
-                <span>Torta de Frango</span>
-                <span>450g, 900g</span>
+                <span>Torta de Frango </span>
               </div>
               <div class="variation-item">
-                <span>Torta de Frango com requeijão</span>
-                <span>450g, 900g</span>
+                <span>Torta de Frango </span>
               </div>
               <div class="variation-item">
-                <span>Torta de Palmito com requeijão</span>
-                <span>450g, 900g</span>
+                <span>Torta de Frango com requeijão </span>
               </div>
               <div class="variation-item">
-                <span>Torta de Bacalhau</span>
-                <span>450g, 900g</span>
+                <span>Torta de Frango com requeijão </span>
               </div>
               <div class="variation-item">
-                <span>Torta de Camarão</span>
-                <span>450g, 900g</span>
+                <span>Torta de Palmito com requeijão </span>
+              </div>
+              <div class="variation-item">
+                <span>Torta de Palmito com requeijão </span>
+              </div>
+              <div class="variation-item">
+                <span>Torta de Bacalhau </span>
+              </div>
+              <div class="variation-item">
+                <span>Torta de Bacalhau </span>
+              </div>
+              <div class="variation-item">
+                <span>Torta de Camarão </span>
+              </div>
+              <div class="variation-item">
+                <span>Torta de Camarão </span>
               </div>
             </div>
             <div class="product-cta">
@@ -990,13 +1059,15 @@
           </div>
         </div>
 
-        <!-- Outros Produtos -->
-        <div class="product-card" data-category="outros">
+        <!-- Molhos -->
+        <div class="product-card" data-category="molhos">
           <img src="imgs/Molho ao Sugo - Andreani.jpeg" alt="Molho ao Sugo" class="product-image">
           <div class="product-info">
             <h3 class="product-name">Molho ao Sugo</h3>
             <div class="product-variations">
-              <!-- Espaço em branco mantido -->
+              <div class="variation-item">
+                <span>Molho ao Sugo </span>
+              </div>
             </div>
             <div class="product-cta">
               <a href="https://wa.me/+5531984711401?text=Gostaria%20de%20pedir%20Molho%20ao%20Sugo" class="whatsapp-btn"
@@ -1007,12 +1078,14 @@
           </div>
         </div>
 
-        <div class="product-card" data-category="outros">
+        <div class="product-card" data-category="molhos">
           <img src="imgs/Molho Bolonhesa - Andreani.jpeg" alt="Molho Bolonhesa" class="product-image">
           <div class="product-info">
             <h3 class="product-name">Molho Bolonhesa</h3>
             <div class="product-variations">
-              <!-- Espaço em branco mantido -->
+              <div class="variation-item">
+                <span>Molho Bolonhesa </span>
+              </div>
             </div>
             <div class="product-cta">
               <a href="https://wa.me/+5531984711401?text=Gostaria%20de%20pedir%20Molho%20Bolonhesa" class="whatsapp-btn"
@@ -1023,12 +1096,14 @@
           </div>
         </div>
 
-        <div class="product-card" data-category="outros">
+        <div class="product-card" data-category="molhos">
           <img src="imgs/Molho Branco - Andreani.jpeg" alt="Molho Branco" class="product-image">
           <div class="product-info">
             <h3 class="product-name">Molho Branco</h3>
             <div class="product-variations">
-              <!-- Espaço em branco mantido -->
+              <div class="variation-item">
+                <span>Molho Branco </span>
+              </div>
             </div>
             <div class="product-cta">
               <a href="https://wa.me/+5531984711401?text=Gostaria%20de%20pedir%20Molho%20Branco" class="whatsapp-btn"
@@ -1039,12 +1114,46 @@
           </div>
         </div>
 
+        <!-- Crepes -->
+        <div class="product-card" data-category="crepes">
+          <img src="imgs/Crepe - Andreani.jpeg" alt="Crepe" class="product-image">
+          <div class="product-info">
+            <h3 class="product-name">Crepe</h3>
+            <div class="product-variations">
+              <div class="variation-item">
+                <span>Crepe de Frango</span>
+              </div>
+              <div class="variation-item">
+                <span>Crepe de Frango com requeijão</span>
+              </div>
+              <div class="variation-item">
+                <span>Crepe de Presunto com Mussarela</span>
+              </div>
+              <div class="variation-item">
+                <span>Crepe de Espinafre com Ricota</span>
+              </div>
+              <div class="variation-item">
+                <span>Crepe Quatro Queijos</span>
+              </div>
+            </div>
+            <div class="product-cta">
+              <a href="https://wa.me/+5531984711401?text=Gostaria%20de%20pedir%20Crepe" class="whatsapp-btn"
+                target="_blank">
+                <i class="fab fa-whatsapp"></i> Pedir
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Outros Produtos -->
         <div class="product-card" data-category="outros">
           <img src="imgs/TagliatelleArtesanal.jpg" alt="Tagliatelle Artesanal" class="product-image">
           <div class="product-info">
             <h3 class="product-name">Tagliatelle Artesanal</h3>
             <div class="product-variations">
-              <!-- Espaço em branco mantido -->
+              <div class="variation-item">
+                <span>Tagliatelle Artesanal</span>
+              </div>
             </div>
             <div class="product-cta">
               <a href="https://wa.me/+5531984711401?text=Gostaria%20de%20pedir%20Tagliatelle%20Artesanal"
@@ -1061,13 +1170,13 @@
             <h3 class="product-name">Mini Pizza</h3>
             <div class="product-variations">
               <div class="variation-item">
-                <span>Mini Pizza de Mussarela</span>
+                <span>Mini Pizza de Mussarela </span>
               </div>
               <div class="variation-item">
-                <span>Mini Pizza de Calabresa</span>
+                <span>Mini Pizza de Calabresa </span>
               </div>
               <div class="variation-item">
-                <span>Mini Pizza de Frango</span>
+                <span>Mini Pizza de Frango </span>
               </div>
             </div>
             <div class="product-cta">
@@ -1078,16 +1187,73 @@
             </div>
           </div>
         </div>
-
-        <div class="product-card" data-category="outros">
-          <img src="imgs/Crepe - Andreani.jpeg" alt="Crepe" class="product-image">
+        
+        <!-- Produtos Adicionais do Cardápio -->
+        <div class="product-card" data-category="semi-prontas">
+          <img src="imgs/Canelloni - Andreani.jpeg" alt="Agnolotti" class="product-image">
           <div class="product-info">
-            <h3 class="product-name">Crepe</h3>
+            <h3 class="product-name">Agnolotti</h3>
             <div class="product-variations">
-              <!-- Espaço em branco mantido -->
+              <div class="variation-item">
+                <span>Agnolotti Frango com Requeijão</span>
+              </div>
+              <div class="variation-item">
+                <span>Agnolotti Quatro Queijos</span>
+              </div>
+              <div class="variation-item">
+                <span>Agnolotti de Abacaxi com Damasco</span>
+              </div>
             </div>
             <div class="product-cta">
-              <a href="https://wa.me/+5531984711401?text=Gostaria%20de%20pedir%20Crepe" class="whatsapp-btn"
+              <a href="https://wa.me/+5531984711401?text=Gostaria%20de%20pedir%20Agnolotti" class="whatsapp-btn"
+                target="_blank">
+                <i class="fab fa-whatsapp"></i> Pedir
+              </a>
+            </div>
+          </div>
+        </div>
+        
+        <div class="product-card" data-category="massas-prontas">
+          <img src="imgs/Canelloni - Andreani.jpeg" alt="Caneloni Pronto" class="product-image">
+          <div class="product-info">
+            <h3 class="product-name">Caneloni Pronto</h3>
+            <div class="product-variations">
+              <div class="variation-item">
+                <span>Caneloni à Bolonhesa </span>
+              </div>
+              <div class="variation-item">
+                <span>Caneloni à Bolonhesa </span>
+              </div>
+              <div class="variation-item">
+                <span>Caneloni de Frango </span>
+              </div>
+            </div>
+            <div class="product-cta">
+              <a href="https://wa.me/+5531984711401?text=Gostaria%20de%20pedir%20Caneloni%20Pronto" class="whatsapp-btn"
+                target="_blank">
+                <i class="fab fa-whatsapp"></i> Pedir
+              </a>
+            </div>
+          </div>
+        </div>
+        
+        <div class="product-card" data-category="massas-prontas">
+          <img src="imgs/Rondelli - Andreani.jpeg" alt="Rondeli Pronto" class="product-image">
+          <div class="product-info">
+            <h3 class="product-name">Rondeli Pronto</h3>
+            <div class="product-variations">
+              <div class="variation-item">
+                <span>Rondeli à Bolonhesa </span>
+              </div>
+              <div class="variation-item">
+                <span>Rondeli de Frango </span>
+              </div>
+              <div class="variation-item">
+                <span>Rondeli Quatro Queijos </span>
+              </div>
+            </div>
+            <div class="product-cta">
+              <a href="https://wa.me/+5531984711401?text=Gostaria%20de%20pedir%20Rondeli%20Pronto" class="whatsapp-btn"
                 target="_blank">
                 <i class="fab fa-whatsapp"></i> Pedir
               </a>
