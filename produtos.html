@@ -454,7 +454,7 @@
     }
 
     /* WhatsApp Float */
-    .float-whatsapp {
+.float-whatsapp {
       position: fixed;
       bottom: 2rem;
       right: 2rem;
@@ -467,14 +467,15 @@
       justify-content: center;
       color: var(--white);
       font-size: 1.5rem;
-      box-shadow: var(--shadow-lg);
-      z-index: 999;
+      box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);
+      z-index: 9999; /* Aumentado para ficar acima de tudo */
       transition: var(--transition);
     }
 
     .float-whatsapp:hover {
       background: #128C7E;
       transform: scale(1.1);
+      box-shadow: 0 6px 20px rgba(37, 211, 102, 0.4);
     }
 
     /* No Products Message */
@@ -568,48 +569,68 @@
         padding: 0 1rem 3rem;
       }
 
-      .products-grid {
-        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-        gap: 1.5rem;
-      }
-
-      .product-card {
-        margin: 0 auto;
-        max-width: 400px;
-        min-height: 420px;
-        max-height: 550px;
-      }
-
-      .product-image {
-        height: 200px;
-      }
-
-      .product-info {
-        padding: 1.2rem;
-      }
+      
 
       .product-name {
         font-size: 1.3rem;
         min-height: 3.2rem;
       }
 
-      .product-variations {
-        max-height: 160px;
-      }
-
+      
       .footer-bottom {
         flex-direction: column;
         text-align: center;
       }
 
+      
+      .products-grid {
+        grid-template-columns: 1fr; /* Uma coluna apenas */
+        gap: 1.5rem;
+        justify-items: center; /* Centraliza os cards */
+      }
+
+      .product-card {
+        margin: 0 auto;
+        width: 100%;
+        max-width: 400px;
+        min-height: auto; /* Remove altura mínima fixa */
+        height: auto; /* Altura automática */
+        display: flex;
+        flex-direction: column;
+      }
+
+      .product-image {
+        height: 200px; /* Altura fixa para imagens */
+        object-fit: cover;
+      }
+
+      .product-info {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+      }
+
+      .product-variations {
+        flex: 1;
+        max-height: 180px;
+        overflow-y: auto;
+      }
+
+      .product-cta {
+        margin-top: auto;
+        padding-top: 1rem;
+      }
+
       .float-whatsapp {
-        width: 50px;
-        height: 50px;
-        font-size: 1.2rem;
+        width: 65px; /* Maior no mobile */
+        height: 65px;
+        font-size: 1.8rem;
         bottom: 1.5rem;
         right: 1.5rem;
+        box-shadow: 0 5px 20px rgba(37, 211, 102, 0.5);
       }
     }
+    
 
     @media (max-width: 480px) {
       .container {
@@ -625,10 +646,7 @@
         font-size: 0.85rem;
       }
 
-      .products-grid {
-        grid-template-columns: 1fr;
-      }
-
+      
       .product-info {
         padding: 1rem;
       }
@@ -638,10 +656,6 @@
         min-height: 3rem;
       }
 
-      .product-card {
-        min-height: 400px;
-        max-height: 500px;
-      }
 
       .whatsapp-btn {
         padding: 0.7rem 1rem;
@@ -650,6 +664,33 @@
 
       .cta-section {
         padding: 3rem 1rem;
+      }
+      .products-grid {
+        grid-template-columns: 1fr;
+        gap: 1.2rem;
+      }
+
+      .product-card {
+        max-width: 100%;
+        min-height: auto;
+        height: auto;
+      }
+
+      .product-name {
+        min-height: auto; /* Remove altura mínima fixa */
+        height: auto;
+      }
+
+      .product-variations {
+        max-height: 150px;
+      }
+
+      .float-whatsapp {
+        width: 60px;
+        height: 60px;
+        font-size: 1.6rem;
+        bottom: 1.2rem;
+        right: 1.2rem;
       }
     }
     
@@ -667,6 +708,19 @@
       .product-categories::-webkit-scrollbar-thumb {
         background: var(--primary-color);
         border-radius: 10px;
+      }
+      .float-whatsapp {
+        width: 55px;
+        height: 55px;
+        font-size: 1.5rem;
+        bottom: 1rem;
+        right: 1rem;
+      }
+      
+      /* Garante que os cards tenham altura consistente */
+      .product-card {
+        min-height: auto;
+        height: auto;
       }
     }
   </style>
